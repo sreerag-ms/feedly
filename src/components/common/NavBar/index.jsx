@@ -5,7 +5,7 @@ import { Button } from '@bigbinary/neetoui';
 
 function NavBar() {
   return (
-    <nav className="bg-white px-5 h-14 shadow-lg flex flex-wrap flex-col justify-center align-middle">
+    <nav className="sticky w-full bg-white px-5 h-16 shadow-lg flex flex-wrap flex-col justify-center align-middle ">
       <div className="flex flex-wrap flex-row justify-between text-center ">
         <div className="text-lg font-bold text-gray-500">Feed.ly</div>
         <div className="flex flex-wrap flex-row">
