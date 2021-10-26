@@ -1,9 +1,15 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import LandingPage from './components/Landing';
 
 function App() {
-  return <div className="bg-red-200 w-full h-11 bg-center self-center">Home</div>;
+  return (
+    <Router>
+      <Route exact path="/" component={LandingPage} />
+    </Router>
+  );
 }
 
 export default App;
