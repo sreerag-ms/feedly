@@ -3,13 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bigbinary/neeto-icons": "^1.7.9",
+    "@bigbinary/neetoui": "^2.0.96",
     "@craco/craco": "^6.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.24.0",
+    "formik": "^2.2.9",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-lorem-ipsum": "^1.4.9",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
+    "react-router-nav-prompt": "^0.4.1",
     "react-scripts": "4.0.3",
+    "react-toastify": "^8.0.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
