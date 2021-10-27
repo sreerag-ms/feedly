@@ -5,7 +5,7 @@ import NavBar from '../NavBar';
 
 function BodyWrapper({ children }) {
   return (
-    <div cla>
+    <div>
       <NavBar />
       <div className="max-w-full px-32">{children}</div>
     </div>

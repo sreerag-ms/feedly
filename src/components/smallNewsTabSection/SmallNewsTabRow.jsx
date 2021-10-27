@@ -28,7 +28,8 @@ function SmallNewsTabRow({ rowData = [] }) {
   );
 }
 SmallNewsTabRow.propTypes = {
-  rowData: propTypes.node.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  rowData: propTypes.array.isRequired,
 };
 
 export default SmallNewsTabRow;

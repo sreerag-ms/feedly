@@ -1,11 +1,13 @@
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
 import propTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import { React, useEffect } from 'react';
 import BodyWrapper from '../common/Wrapper';
 import NewsSection from '../NewsSection';
 
+// eslint-disable-next-line no-unused-vars
 function LandingSection({ selectedSections = [] }) {
-  console.log('selectedSections', selectedSections);
   const articles = [
     {
       category: 'technology',
@@ -59,7 +61,6 @@ function LandingPage() {
   );
 }
 LandingSection.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  selectedSections: propTypes.array.isRequired,
+  selectedSections: propTypes.array,
 };
 export default LandingPage;

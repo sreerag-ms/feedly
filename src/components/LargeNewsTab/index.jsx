@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/style-prop-object */
 import { React } from 'react';
@@ -32,7 +33,7 @@ LargeNewsTab.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  imageUrl: PropTypes.string,
 };
 export default LargeNewsTab;

@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyWrapper from '../common/Wrapper';
@@ -36,11 +37,19 @@ function ArticlePage({
   ],
 }) {
   const suggestions = articles.filter((val, index) => index !== selectedIndex);
+
   return (
     <div>
       <BodyWrapper>
         <div className="flex flex-col flex-wrap ">
-          <DetailedNewsSection article={articles[selectedIndex]} />
+          <DetailedNewsSection
+            title={articles[selectedIndex].title}
+            content={articles[selectedIndex].content}
+            imageUrl={articles[selectedIndex].imageUrl}
+            author={articles[selectedIndex].author}
+            time={articles[selectedIndex].time}
+            date={articles[selectedIndex].date}
+          />
           <SmallNewsTabSection newsList={suggestions} />
         </div>
       </BodyWrapper>
@@ -48,8 +57,8 @@ function ArticlePage({
   );
 }
 ArticlePage.propTypes = {
-  selectedIndex: PropTypes.node.isRequired,
-  articles: PropTypes.node.isRequired,
+  selectedIndex: PropTypes.node,
+  articles: PropTypes.node,
 };
 
 export default ArticlePage;

@@ -1,21 +1,21 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import LoremIpsum from 'react-lorem-ipsum';
 import { Copy } from '@bigbinary/neeto-icons';
 import RandomImage from '../common/RandomImage';
 // import { Typography } from '@bigbinary/neetoui';
 
-function DetailedNewsSection({ article }) {
+function DetailedNewsSection({ title, imageUrl, author, time, date, content }) {
   return (
     <div className="flex flex-wrap flex-col my-8">
       <div className="flex flex-wrap flex-col my-4">
         <div className="text-3xl font-semibold">
-          {article.title}{' '}
+          {title}{' '}
           <button
             className="w-2 text-gray-100 hover:text-subtitle-gray outline-none focus:outline-none"
             type="button"
             onClick={() => {
-              navigator.clipboard.writeText(article.imageUrl);
+              navigator.clipboard.writeText(imageUrl);
             }}
           >
             <Copy size={20} />
@@ -25,14 +25,14 @@ function DetailedNewsSection({ article }) {
           className="subtitle text-sm text-subtitle-gray mt-3
         "
         >
-          {`${article.author} ${article.time} ${article.date} `}
+          {`${author} ${time} ${date} `}
         </div>
       </div>
       <div className="flex flex-row justify-around my-6 ">
         <RandomImage width={543} height={304} />
       </div>
       <div className="text-sm text-section-title-gray text-justify">
-        {article.content}
+        {content}
         <LoremIpsum p={2} />
       </div>
     </div>
@@ -40,7 +40,12 @@ function DetailedNewsSection({ article }) {
 }
 DetailedNewsSection.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
-  article: propTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
 };
 
 export default DetailedNewsSection;

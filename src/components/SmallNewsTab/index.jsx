@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/style-prop-object */
 import React from 'react';
@@ -6,7 +7,7 @@ import { Button } from '@bigbinary/neetoui';
 import PropTypes from 'prop-types';
 import RandomImage from '../common/RandomImage';
 
-function SmallNewsTab({ title, content, id, subtitle, imageUrl }) {
+function SmallNewsTab({ title, content = '', id = '#', subtitle, imageUrl }) {
   return (
     <div className="flex flex-col flex-wrap w-5/12  px-0 py-2 my-3   ">
       <div className="flex flex-row flex-wrap">
@@ -29,8 +30,8 @@ function SmallNewsTab({ title, content, id, subtitle, imageUrl }) {
 SmallNewsTab.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  id: PropTypes.string,
+  imageUrl: PropTypes.string,
 };
 export default SmallNewsTab;

@@ -9,7 +9,6 @@ function NewsSection({ category, articles }) {
   const majorArticle = articles[0];
 
   const minorArticles = articles.slice(1);
-  console.log('NewsSection', minorArticles);
 
   return (
     <div className="mx-10 my-10 px-2  ">
