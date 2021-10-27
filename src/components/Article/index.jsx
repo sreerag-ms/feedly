@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -6,6 +7,7 @@ import DetailedNewsSection from './DetailedNewsSection';
 import SmallNewsTabSection from '../smallNewsTabSection';
 
 function ArticlePage({
+  // allNews,
   selectedIndex = 0,
   articles = [
     {
@@ -59,6 +61,7 @@ function ArticlePage({
 ArticlePage.propTypes = {
   selectedIndex: PropTypes.node,
   articles: PropTypes.node,
+  // allNews: PropTypes.array,
 };
 
 export default ArticlePage;

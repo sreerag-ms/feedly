@@ -4,25 +4,26 @@ import SmallNewsTab from '../SmallNewsTab';
 import { subTitleGenerator } from '../common/commonFunctions';
 
 function SmallNewsTabRow({ rowData = [] }) {
+  const [first, second] = rowData;
   return rowData.length === 1 ? (
     <div className="flex flex-row justify-self-start">
       <SmallNewsTab
-        title={rowData[0].title}
-        subtitle={subTitleGenerator(rowData[0])}
-        imageUrl={rowData[0].imageUrl}
+        title={first.title}
+        subtitle={subTitleGenerator(first)}
+        imageUrl={first.imageUrl}
       />
     </div>
   ) : (
     <div className="flex flex-row justify-between">
       <SmallNewsTab
-        title={rowData[0].title}
-        subtitle={subTitleGenerator(rowData[0])}
-        imageUrl={rowData[0].imageUrl}
+        title={first.title}
+        subtitle={subTitleGenerator(first)}
+        imageUrl={first.imageUrl}
       />
       <SmallNewsTab
-        title={rowData[1].title}
-        subtitle={subTitleGenerator(rowData[1])}
-        imageUrl={rowData[1].imageUrl}
+        title={second.title}
+        subtitle={subTitleGenerator(second)}
+        imageUrl={second.imageUrl}
       />
     </div>
   );
