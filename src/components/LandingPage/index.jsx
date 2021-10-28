@@ -12,6 +12,7 @@ import helperFunctions from '../common/helperFuncs';
 import LoadingScreen from '../common/LoadingScreen';
 import commonFunctions from '../common/commonFunctions';
 import FilterTabBar from './FilterTabView';
+import NoNewsScreen from './NoNewsScreen';
 
 function LandingPage({
   selectedSections = [],
@@ -19,30 +20,39 @@ function LandingPage({
   filters,
   setfilters,
   setallNews,
-  setallCategories,
   allCategories,
 }) {
   const [trimmedAllNews, settrimmedAllNews] = useState([]);
   const [loading, setloading] = useState(true);
-
+  const [isNewsEmpty, setisNewsEmpty] = useState(false);
   useEffect(() => {
-    console.log('allNews', allNews);
     if (allNews.length > 0) setloading(false);
   }, [allNews]);
 
   useEffect(() => {
-    settrimmedAllNews(helperFunctions.filterFive(allNews, filters, 5));
+    const tempTrimmedNews = helperFunctions.filterFive(allNews, filters, 5);
+    const isEmpty = tempTrimmedNews.reduce((a, b) => b.data.length > 0 || a, false);
+    settrimmedAllNews(tempTrimmedNews);
+    setisNewsEmpty(isEmpty);
     return () => {};
-  }, [filters]);
+  }, [filters, allNews]);
 
   if (loading) return <LoadingScreen showNav={false} />;
 
   return (
     <div className="flex  flex-col flex-wrap ">
       <FilterTabBar filters={filters} setfilters={setfilters} />
-      {trimmedAllNews.map((val) => (
-        <NewsSection key={val.category} category={val.category} articles={val.data} />
-      ))}
+      {isNewsEmpty ? (
+        trimmedAllNews.map((val) =>
+          val.data.length > 0 ? (
+            <NewsSection key={val.category} category={val.category} articles={val.data} />
+          ) : (
+            <></>
+          ),
+        )
+      ) : (
+        <NoNewsScreen />
+      )}
     </div>
   );
 }
@@ -69,7 +79,6 @@ LandingPage.propTypes = {
   selectedSections: PropTypes.array,
   allNews: PropTypes.array.isRequired,
   setallNews: PropTypes.func,
-  setallCategories: PropTypes.func,
   allCategories: PropTypes.array.isRequired,
   filters: PropTypes.object.isRequired,
   setfilters: PropTypes.func.isRequired,

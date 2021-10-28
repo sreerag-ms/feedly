@@ -13,18 +13,12 @@ import BodyWrapper from './components/common/Wrapper';
 
 function App() {
   const [allNews, setallNews] = useState([]);
-  const [allCategories, setallCategories] = useState([
-    'business',
-    'sports',
-    'world',
-    'technology',
-    'science',
-  ]);
+  const allCategories = ['business', 'sports', 'world', 'technology', 'science', 'national'];
 
   const [showSideBar, setshowSideBar] = useState(false);
   const [stateLoading, setstateLoading] = useState(true);
   const [filters, setfilters] = useState({
-    archived: false,
+    archived: true,
     categories: ['sports', 'world', 'technology', 'science'],
   });
 
@@ -51,46 +45,24 @@ function App() {
   }, []);
 
   return (
-    <BodyWrapper setshowSideBar={setshowSideBar} showSideBar={showSideBar} allNews={allNews}>
+    <BodyWrapper
+      setshowSideBar={setshowSideBar}
+      showSideBar={showSideBar}
+      allNews={allNews}
+      allCategories={allCategories}
+      filters={filters}
+      setfilters={setfilters}
+    >
       <AppRoutes
         allNews={allNews}
         setallNews={setallNews}
         allCategories={allCategories}
-        setallCategories={setallCategories}
         showSideBar={showSideBar}
         setshowSideBar={setshowSideBar}
         filters={filters}
         setfilters={setfilters}
       />
     </BodyWrapper>
-    // <Router>
-    //   <Route
-    //     exact
-    //     path="/"
-    //     component={() => (
-    //       <LandingPage
-    // allNews={allNews}
-    // setallNews={setallNews}
-    // allCategories={allCategories}
-    // setallCategories={setallCategories}
-    // showSideBar={showSideBar}
-    // setshowSideBar={setshowSideBar}
-    //       />
-    //     )}
-    //   />
-    //   <Route
-    //     exact
-    //     path="/:category/:id/readmore"
-    //     component={() => (
-    //       <ArticlePage
-    //         allNews={allNews}
-    //         stateLoading={stateLoading}
-    //         showSideBar={showSideBar}
-    //         setshowSideBar={setshowSideBar}
-    //       />
-    //     )}
-    //   />
-    // </Router>
   );
 }
 

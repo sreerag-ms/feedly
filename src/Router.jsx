@@ -6,7 +6,7 @@ import LandingPage from './components/LandingPage';
 import ArticlePage from './components/ArticlePage';
 // import helperFunctions from './components/common/helperFuncs';
 
-function AppRoutes({ allNews, setallNews, allCategories, setallCategories, filters, setfilters }) {
+function AppRoutes({ allNews, setallNews, allCategories, filters, setfilters }) {
   const [stateLoading, setstateLoading] = useState(true);
   useEffect(() => {
     setstateLoading(false);
@@ -22,7 +22,6 @@ function AppRoutes({ allNews, setallNews, allCategories, setallCategories, filte
             allNews={allNews}
             setallNews={setallNews}
             allCategories={allCategories}
-            setallCategories={setallCategories}
             filters={filters}
             setfilters={setfilters}
           />
@@ -40,7 +39,6 @@ AppRoutes.PropsTypes = {
   allNews: PropsTypes.array.isRequired,
   setallNews: PropsTypes.func.isRequired,
   allCategories: PropsTypes.array.isRequired,
-  setallCategories: PropsTypes.func.isRequired,
   filters: PropsTypes.object.isRequired,
   setfilters: PropsTypes.func.isRequired,
 };

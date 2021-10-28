@@ -14,7 +14,6 @@ const addId = (categoryNews) => {
 };
 
 const filterFive = (allNews, filters, n) => {
-  console.log('Filter fun', allNews, filters, n);
   let archived;
   let categories;
   // eslint-disable-next-line no-unused-vars
@@ -24,12 +23,23 @@ const filterFive = (allNews, filters, n) => {
 
   return includedCategories.map((val) => {
     let trimm = [];
-    if (false) {
-      trimm = Object.keys(val.data).filter((elem) => elem.date);
-    } else
+    if (!archived) {
+      trimm = Object.keys(val.data)
+        .filter(
+          (elem) => new Date(val.data[elem].date.split(',')[0]).getDate() === new Date().getDate(),
+        )
+        .map((elem) => val.data[elem]);
+      console.log('non archived', trimm);
+    } else {
+      // Object.keys(val.data).forEach((elem) => {
+      //   console.log(val.data[elem].date);
+      // });
+      console.log('all archived');
+
       trimm = Object.keys(val.data)
         .slice(0, n)
         .map((elem) => val.data[elem]);
+    }
     return { ...val, data: trimm };
   });
 };

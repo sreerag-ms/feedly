@@ -32,7 +32,6 @@ function FilterTab({ title, setfilters, filters }) {
 }
 // eslint-disable-next-line react/prop-types
 function FilterTabBar({ setfilters, filters }) {
-  console.log('filter', setfilters);
   let archived;
   let categories;
   ({ archived, categories } = filters);

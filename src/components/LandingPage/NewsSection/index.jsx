@@ -6,24 +6,25 @@ import SmallNewsTabSection from '../../common/smallNewsTabSection';
 import commonFunctions from '../../common/commonFunctions';
 
 function NewsSection({ category, articles }) {
-  const majorArticle = articles[0];
-
-  const minorArticles = articles.slice(1);
+  const [majorArticle, ...minorArticles] = articles;
 
   return (
     <div className="mx-10 my-6 px-2  ">
       <div className=" text-2xl font-semibold mb-6 ">
         {`${commonFunctions.capitalize(category)} News`}
       </div>
-
-      <LargeNewsTab
-        title={majorArticle.title}
-        content={majorArticle.content}
-        subtitle={commonFunctions.subTitleGenerator(majorArticle)}
-        id={majorArticle.id}
-        category={majorArticle.category}
-        imageUrl={majorArticle.imageUrl}
-      />
+      {majorArticle ? (
+        <LargeNewsTab
+          title={majorArticle.title}
+          content={majorArticle.content}
+          subtitle={commonFunctions.subTitleGenerator(majorArticle)}
+          id={majorArticle.id}
+          category={majorArticle.category}
+          imageUrl={majorArticle.imageUrl}
+        />
+      ) : (
+        <div>No articles found </div>
+      )}
 
       <SmallNewsTabSection newsList={minorArticles} />
     </div>
