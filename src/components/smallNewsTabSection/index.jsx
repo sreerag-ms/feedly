@@ -12,7 +12,7 @@ function SmallNewsTabSection({ newsList = [] }) {
   ) : (
     <div className="flex flex-col border-b-2  border-t-2 my-6">
       {rows.map((item) => (
-        <SmallNewsTabRow key="key" rowData={item} />
+        <SmallNewsTabRow key={item[0].id} rowData={item} />
       ))}
     </div>
   );

@@ -10,9 +10,10 @@
     "codeFrame": false,
 
     "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
       "jsx": true
     },
-    "ecmaVersion": 8,
+    "ecmaVersion": 10,
     "sourceType": "module"
   },
   "plugins": ["react"],

@@ -1,28 +1,35 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import SmallNewsTab from '../SmallNewsTab';
-import { subTitleGenerator } from '../common/commonFunctions';
+import commonFunctions from '../common/commonFunctions';
 
 function SmallNewsTabRow({ rowData = [] }) {
+  const [first, second] = rowData;
   return rowData.length === 1 ? (
     <div className="flex flex-row justify-self-start">
       <SmallNewsTab
-        title={rowData[0].title}
-        subtitle={subTitleGenerator(rowData[0])}
-        imageUrl={rowData[0].imageUrl}
+        title={first.title}
+        subtitle={commonFunctions.subTitleGenerator(first)}
+        imageUrl={first.imageUrl}
+        id={first.id}
+        category={first.category}
       />
     </div>
   ) : (
     <div className="flex flex-row justify-between">
       <SmallNewsTab
-        title={rowData[0].title}
-        subtitle={subTitleGenerator(rowData[0])}
-        imageUrl={rowData[0].imageUrl}
+        title={first.title}
+        subtitle={commonFunctions.subTitleGenerator(first)}
+        imageUrl={first.imageUrl}
+        id={first.id}
+        category={first.category}
       />
       <SmallNewsTab
-        title={rowData[1].title}
-        subtitle={subTitleGenerator(rowData[1])}
-        imageUrl={rowData[1].imageUrl}
+        title={second.title}
+        subtitle={commonFunctions.subTitleGenerator(second)}
+        imageUrl={second.imageUrl}
+        id={second.id}
+        category={second.category}
       />
     </div>
   );
