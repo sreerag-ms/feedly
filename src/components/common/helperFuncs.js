@@ -1,9 +1,11 @@
+import slugify from 'slugify';
+
 const addId = (categoryNews) => {
   const dataArray = categoryNews.data;
   const idDataObj = {};
 
   dataArray.forEach((element) => {
-    const key = btoa(element.date + element.time + element.title.slice(-10));
+    const key = slugify(element.date + element.time + element.title);
     idDataObj[key] = { ...element, id: key, category: categoryNews.category };
   });
 

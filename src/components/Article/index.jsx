@@ -7,18 +7,25 @@ import BodyWrapper from '../common/Wrapper';
 import DetailedNewsSection from './DetailedNewsSection';
 import SmallNewsTabSection from '../smallNewsTabSection';
 import helperFuncs from '../common/helperFuncs';
+import LoadingScreen from '../common/LoadingScreen/index';
+// import inshortsApi from '../../apis/inshortsApi';
 
 function ArticlePage({
   // allNews,
   allNews,
+  stateLoading = true,
 }) {
   // const [loading, setloading] = useState(true);
-
+  if (stateLoading) {
+    return <LoadingScreen showNav />;
+  }
   const { category, id } = useParams();
   const articles = allNews.filter((val) => val.category === category)[0].data;
   const suggestions = helperFuncs.filterArticles(articles, id);
 
-  const fetchReadMore = async () => {};
+  const fetchReadMore = async () => {
+    // res = await inshortsApi.
+  };
 
   useEffect(() => {
     fetchReadMore();
@@ -47,6 +54,7 @@ function ArticlePage({
 }
 ArticlePage.propTypes = {
   allNews: PropTypes.array,
+  stateLoading: PropTypes.bool,
   // allNews: PropTypes.array,
 };
 

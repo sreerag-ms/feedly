@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { React, useState, useEffect } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import LandingPage from './components/Landing';
 import ArticlePage from './components/Article';
 import inshortsApi from './apis/inshortsApi';
 import helperFunctions from './components/common/helperFuncs';
+import LoadingScreen from './components/common/LoadingScreen';
 
 function App() {
   const [allNews, setallNews] = useState([]);
@@ -17,7 +17,8 @@ function App() {
     'technology',
     'science',
   ]);
-
+  const [showSideBar, setshowSideBar] = useState(false);
+  const [stateLoading, setstateLoading] = useState(true);
   const fetchAllNews = async () => {
     let all = [];
     allCategories.forEach(async (val, index) => {
@@ -25,10 +26,8 @@ function App() {
         const res = await inshortsApi.category(val);
         const markedData = helperFunctions.addId(res.data, index);
         all = [...all, markedData];
-
         setallNews(all);
-
-        // if (index === allCategories.length - 1) console.log('all', allNews);
+        if (all.length === allCategories.length) setstateLoading(false);
       } catch (e) {
         console.log(e);
       }
@@ -40,13 +39,6 @@ function App() {
     return () => {};
   }, []);
 
-  // useEffect(() => {
-  //   setloading(false);
-  //   return () => {};
-  // }, []);
-  // if (loading) {
-  //   return <div>Loading</div>;
-  // }
   return (
     <Router>
       <Route
@@ -65,7 +57,7 @@ function App() {
       <Route
         exact
         path="/:category/:id/readmore"
-        component={() => <ArticlePage allNews={allNews} />}
+        component={() => <ArticlePage allNews={allNews} stateLoading={stateLoading} />}
       />
     </Router>
   );

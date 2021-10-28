@@ -3,7 +3,7 @@ import React from 'react';
 import LargeNewsTab from '../LargeNewsTab';
 // import SmallNewsTab from '../SmallNewsTab';
 import SmallNewsTabSection from '../smallNewsTabSection';
-import { subTitleGenerator } from '../common/commonFunctions';
+import commonFunctions from '../common/commonFunctions';
 
 function NewsSection({ category, articles }) {
   const majorArticle = articles[0];
@@ -13,13 +13,13 @@ function NewsSection({ category, articles }) {
   return (
     <div className="mx-10 my-10 px-2  ">
       <div className=" text-2xl font-semibold mb-6 mt-10">
-        {category.charAt(0).toUpperCase() + category.slice(1)}
+        {`${commonFunctions.capitalize(category)} News`}
       </div>
 
       <LargeNewsTab
         title={majorArticle.title}
         content={majorArticle.content}
-        subtitle={subTitleGenerator(majorArticle)}
+        subtitle={commonFunctions.subTitleGenerator(majorArticle)}
         id={majorArticle.id}
         category={majorArticle.category}
         imageUrl={majorArticle.imageUrl}

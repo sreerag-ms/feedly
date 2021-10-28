@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import SmallNewsTab from '../SmallNewsTab';
-import { subTitleGenerator } from '../common/commonFunctions';
+import commonFunctions from '../common/commonFunctions';
 
 function SmallNewsTabRow({ rowData = [] }) {
   const [first, second] = rowData;
@@ -9,7 +9,7 @@ function SmallNewsTabRow({ rowData = [] }) {
     <div className="flex flex-row justify-self-start">
       <SmallNewsTab
         title={first.title}
-        subtitle={subTitleGenerator(first)}
+        subtitle={commonFunctions.subTitleGenerator(first)}
         imageUrl={first.imageUrl}
         id={first.id}
         category={first.category}
@@ -19,14 +19,14 @@ function SmallNewsTabRow({ rowData = [] }) {
     <div className="flex flex-row justify-between">
       <SmallNewsTab
         title={first.title}
-        subtitle={subTitleGenerator(first)}
+        subtitle={commonFunctions.subTitleGenerator(first)}
         imageUrl={first.imageUrl}
         id={first.id}
         category={first.category}
       />
       <SmallNewsTab
         title={second.title}
-        subtitle={subTitleGenerator(second)}
+        subtitle={commonFunctions.subTitleGenerator(second)}
         imageUrl={second.imageUrl}
         id={second.id}
         category={second.category}

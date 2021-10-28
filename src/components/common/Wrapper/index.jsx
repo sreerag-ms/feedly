@@ -7,7 +7,7 @@ function BodyWrapper({ children }) {
   return (
     <div>
       <NavBar />
-      <div className="max-w-full px-32 pt-16">{children}</div>
+      <div className="max-w-full max-h-full px-32 pt-16">{children}</div>
     </div>
   );
 }

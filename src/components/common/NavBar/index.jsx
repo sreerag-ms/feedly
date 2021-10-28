@@ -5,6 +5,7 @@ import React from 'react';
 import { Search, Notification, Filter } from '@bigbinary/neeto-icons';
 // import { Button } from '@bigbinary/neetoui';
 import { useHistory } from 'react-router';
+import ToolTip from '../RandomImage/Tooltip';
 
 function NavBar() {
   const history = useHistory();
@@ -32,10 +33,20 @@ function NavBar() {
         <div className="flex  flex-row">
           <div className="flex  flex-row mt-1">
             <div className="px-5">
-              <Search />
+              <ToolTip content="Search">
+                <Search
+                  label="tool"
+                  tooltipProps={{
+                    content: 'Top',
+                    placement: 'top',
+                  }}
+                />
+              </ToolTip>
             </div>
             <div className="px-5">
-              <Notification />
+              <ToolTip content="Subscribe">
+                <Notification title="tool" />
+              </ToolTip>
             </div>
           </div>
 

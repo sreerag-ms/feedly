@@ -5,11 +5,14 @@
 // eslint-disable-next-line no-unused-vars
 import { React, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Sidebar from 'react-sidebar';
 import BodyWrapper from '../common/Wrapper';
 import NewsSection from '../NewsSection';
 import inshortsApi from '../../apis/inshortsApi';
 import helperFunctions from '../common/helperFuncs';
 // eslint-disable-next-line no-unused-vars
+import LoadingScreen from '../common/LoadingScreen';
+
 function LandingSection({
   selectedSections = [],
   allNews,
@@ -18,23 +21,30 @@ function LandingSection({
   allCategories,
 }) {
   const [trimmedAllNews, settrimmedAllNews] = useState([]);
+  const [loading, setloading] = useState(true);
+  const [sideBarToggle, setsideBarToggle] = useState(false);
+
   useEffect(() => {
     console.log('all news', allNews);
-    return () => {};
+    if (allNews.length > 0) setloading(false);
   }, [allNews]);
   useEffect(() => {
     settrimmedAllNews(helperFunctions.filterFive(allNews, 5));
     return () => {};
   }, []);
+  if (loading) return <LoadingScreen showNav={false} />;
 
   return (
-    <div className="flex flex-col flex-wrap ">
-      {trimmedAllNews.map((val) => (
-        <NewsSection key={val.category} category={val.category} articles={val.data} />
-      ))}
-    </div>
+    <Sidebar sidebar={<b>Sidebar content</b>} styles={{ sidebar: { background: 'white' } }}>
+      <div className="flex  flex-col flex-wrap ">
+        {trimmedAllNews.map((val) => (
+          <NewsSection key={val.category} category={val.category} articles={val.data} />
+        ))}
+      </div>
+    </Sidebar>
   );
 }
+
 function LandingPage({
   selectedSections = [],
   allNews,

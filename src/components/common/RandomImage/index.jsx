@@ -13,7 +13,6 @@ function RandomImage({ width = 100, height = 100, random = true, imageUrl = '' }
   return (
     <div className={`bg-gray-100 w-${width} h-${height} overflow-hidden`}>
       <div className={`relative items-center h-${height} z-1`}>
-        {/* <PageLoader /> */}
         {random ? (
           <img
             className="relative z100"
@@ -25,7 +24,7 @@ function RandomImage({ width = 100, height = 100, random = true, imageUrl = '' }
           />
         ) : (
           <img
-            className="relative z100 object-cover object-center min-h-full"
+            className="relative z-10 object-cover object-center min-h-full"
             src={imageUrl}
             alt="Related pic"
             onLoad={() => {
