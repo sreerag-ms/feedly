@@ -20,7 +20,9 @@ function NewsSection({ category, articles }) {
         title={majorArticle.title}
         content={majorArticle.content}
         subtitle={subTitleGenerator(majorArticle)}
-        id="s"
+        id={majorArticle.id}
+        category={majorArticle.category}
+        imageUrl={majorArticle.imageUrl}
       />
 
       <SmallNewsTabSection newsList={minorArticles} />

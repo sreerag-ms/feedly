@@ -62,6 +62,11 @@ function App() {
         )}
       />
       <Route exact path="/detail" component={() => <ArticlePage allNews={allNews} />} />
+      <Route
+        exact
+        path="/:category/:id/readmore"
+        component={() => <ArticlePage allNews={allNews} />}
+      />
     </Router>
   );
 }

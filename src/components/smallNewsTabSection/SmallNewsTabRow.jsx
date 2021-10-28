@@ -11,6 +11,8 @@ function SmallNewsTabRow({ rowData = [] }) {
         title={first.title}
         subtitle={subTitleGenerator(first)}
         imageUrl={first.imageUrl}
+        id={first.id}
+        category={first.category}
       />
     </div>
   ) : (
@@ -19,11 +21,15 @@ function SmallNewsTabRow({ rowData = [] }) {
         title={first.title}
         subtitle={subTitleGenerator(first)}
         imageUrl={first.imageUrl}
+        id={first.id}
+        category={first.category}
       />
       <SmallNewsTab
         title={second.title}
         subtitle={subTitleGenerator(second)}
         imageUrl={second.imageUrl}
+        id={second.id}
+        category={second.category}
       />
     </div>
   );
