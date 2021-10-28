@@ -3,11 +3,12 @@
 import { React, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import BodyWrapper from '../common/Wrapper';
+// import BodyWrapper from '../common/Wrapper';
 import DetailedNewsSection from './DetailedNewsSection';
-import SmallNewsTabSection from '../smallNewsTabSection';
+import SmallNewsTabSection from '../common/smallNewsTabSection';
 import helperFuncs from '../common/helperFuncs';
 import LoadingScreen from '../common/LoadingScreen/index';
+// import SideBar from '../common/SideBar';
 // import inshortsApi from '../../apis/inshortsApi';
 
 function ArticlePage({
@@ -32,29 +33,31 @@ function ArticlePage({
     return () => {};
   }, []);
 
-  console.log(articles[id], Object.keys(articles), id);
+  // console.log('articleSideBar', showSideBar, setshowSideBar);
 
   return (
     <div>
-      <BodyWrapper>
-        <div className="flex flex-col flex-wrap ">
-          <DetailedNewsSection
-            title={articles[id].title}
-            content={articles[id].content}
-            imageUrl={articles[id].imageUrl}
-            author={articles[id].author}
-            time={articles[id].time}
-            date={articles[id].date}
-          />
-          <SmallNewsTabSection newsList={suggestions} />
-        </div>
-      </BodyWrapper>
+      {/* <BodyWrapper setshowSideBar={setshowSideBar} showSideBar={showSideBar}> */}
+      <div className="flex flex-col flex-wrap ">
+        <DetailedNewsSection
+          title={articles[id].title}
+          content={articles[id].content}
+          imageUrl={articles[id].imageUrl}
+          author={articles[id].author}
+          time={articles[id].time}
+          date={articles[id].date}
+        />
+        <SmallNewsTabSection newsList={suggestions} />
+      </div>
+      {/* </BodyWrapper> */}
     </div>
   );
 }
 ArticlePage.propTypes = {
   allNews: PropTypes.array,
   stateLoading: PropTypes.bool,
+  // showSideBar: PropTypes.bool.isRequired,
+  // setshowSideBar: PropTypes.func.isRequired,
   // allNews: PropTypes.array,
 };
 

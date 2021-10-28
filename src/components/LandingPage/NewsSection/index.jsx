@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import LargeNewsTab from '../LargeNewsTab';
+import LargeNewsTab from './LargeNewsTab';
 // import SmallNewsTab from '../SmallNewsTab';
-import SmallNewsTabSection from '../smallNewsTabSection';
-import commonFunctions from '../common/commonFunctions';
+import SmallNewsTabSection from '../../common/smallNewsTabSection';
+import commonFunctions from '../../common/commonFunctions';
 
 function NewsSection({ category, articles }) {
   const majorArticle = articles[0];
@@ -11,8 +11,8 @@ function NewsSection({ category, articles }) {
   const minorArticles = articles.slice(1);
 
   return (
-    <div className="mx-10 my-10 px-2  ">
-      <div className=" text-2xl font-semibold mb-6 mt-10">
+    <div className="mx-10 my-6 px-2  ">
+      <div className=" text-2xl font-semibold mb-6 ">
         {`${commonFunctions.capitalize(category)} News`}
       </div>
 
