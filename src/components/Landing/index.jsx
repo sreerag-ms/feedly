@@ -5,10 +5,8 @@
 // eslint-disable-next-line no-unused-vars
 import { React, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Sidebar from 'react-sidebar';
 import BodyWrapper from '../common/Wrapper';
 import NewsSection from '../NewsSection';
-import inshortsApi from '../../apis/inshortsApi';
 import helperFunctions from '../common/helperFuncs';
 // eslint-disable-next-line no-unused-vars
 import LoadingScreen from '../common/LoadingScreen';
@@ -35,13 +33,11 @@ function LandingSection({
   if (loading) return <LoadingScreen showNav={false} />;
 
   return (
-    <Sidebar sidebar={<b>Sidebar content</b>} styles={{ sidebar: { background: 'white' } }}>
-      <div className="flex  flex-col flex-wrap ">
-        {trimmedAllNews.map((val) => (
-          <NewsSection key={val.category} category={val.category} articles={val.data} />
-        ))}
-      </div>
-    </Sidebar>
+    <div className="flex  flex-col flex-wrap ">
+      {trimmedAllNews.map((val) => (
+        <NewsSection key={val.category} category={val.category} articles={val.data} />
+      ))}
+    </div>
   );
 }
 
