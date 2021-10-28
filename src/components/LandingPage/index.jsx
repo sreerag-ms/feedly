@@ -39,7 +39,7 @@ function LandingPage({
 
   return (
     <div className="flex  flex-col flex-wrap ">
-      {/* <FilterTabBar filters={filters} setfilters={setfilters} /> */}
+      <FilterTabBar filters={filters} setfilters={setfilters} />
       {trimmedAllNews.map((val) => (
         <NewsSection key={val.category} category={val.category} articles={val.data} />
       ))}
