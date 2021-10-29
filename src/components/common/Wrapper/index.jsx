@@ -14,6 +14,8 @@ function BodyWrapper({
   showNavBar = true,
   allCategories,
   filters,
+  // eslint-disable-next-line react/prop-types
+  history,
   setfilters,
 }) {
   return (
@@ -25,8 +27,8 @@ function BodyWrapper({
         filters={filters}
         setfilters={setfilters}
       />
-      {showNavBar ? <NavBar setshowSideBar={setshowSideBar} /> : <></>}
-      <div className="max-w-full px-32 pt-16">{children}</div>
+      {showNavBar ? <NavBar setshowSideBar={setshowSideBar} history={history} /> : <></>}
+      <div className="max-w-full px-36 pt-16">{children}</div>
     </div>
   );
 }

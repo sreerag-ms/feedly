@@ -5,6 +5,7 @@ import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Pane, Button, Checkbox, Typography } from '@bigbinary/neetoui/v2';
 import { Check } from '@bigbinary/neeto-icons';
+import { useHistory } from 'react-router';
 import commonFunctions from '../commonFunctions';
 import LoadingScreen from '../LoadingScreen';
 
@@ -23,23 +24,18 @@ function LabelledCheckBox({ checked = false, label, handleClick }) {
 }
 
 function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, allCategories }) {
+  const history = useHistory();
+
   const [localCategoryFilter, setlocalCategoryFilter] = useState({});
   const [localArchivedFilter, setlocalArchivedFilter] = useState(false);
-
+  const [allFilter, setAllFilter] = useState(false);
   const [loading, setLoading] = useState(true);
-  const handleClick = (event) => {
-    const category = event.target.id;
-    const status = event.target.checked;
 
-    if (category === 'archived') {
-      console.log(category, status, localArchivedFilter);
-      setlocalArchivedFilter(status);
-    } else {
-      console.log(category);
-      const cat = { ...localCategoryFilter };
-      cat[category] = status;
-      setlocalCategoryFilter({ ...cat });
-    }
+  const updateAllFilters = () => {
+    setAllFilter(Object.values(localCategoryFilter).reduce((a, b) => b && a, true));
+  };
+  const checkAllFilters = () => {
+    setlocalCategoryFilter(allCategories.reduce((acc, val) => ({ ...acc, [val]: true }), {}));
   };
 
   const resetLocalStates = () => {
@@ -51,12 +47,32 @@ function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, a
     setlocalArchivedFilter(filters.archived);
   };
 
+  const handleClick = (event) => {
+    const category = event.target.id;
+    const status = event.target.checked;
+    if (category === 'archived') {
+      setlocalArchivedFilter(status);
+    } else if (category === 'all') {
+      if (status) {
+        checkAllFilters();
+      } else {
+        resetLocalStates();
+      }
+      setAllFilter(status);
+    } else {
+      const cat = { ...localCategoryFilter };
+      cat[category] = status;
+      setlocalCategoryFilter({ ...cat });
+    }
+  };
+
   const saveFilter = () => {
     setfilters({
       archived: localArchivedFilter,
       categories: Object.keys(localCategoryFilter).filter((val) => localCategoryFilter[val]),
     });
     setshowSideBar(false);
+    history.push('/');
   };
 
   const cancelFilter = () => {
@@ -71,8 +87,9 @@ function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, a
 
   useEffect(() => {
     setLoading(false);
+    updateAllFilters();
     return () => {};
-  }, [localArchivedFilter]);
+  }, [localCategoryFilter]);
 
   return (
     <Pane isOpen={showSideBar} onClose={() => cancelFilter()}>
@@ -87,6 +104,7 @@ function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, a
         <Pane.Body>
           <div className="flex flex-col  px-10 w-full">
             <div className="text-gray-500 text-lg font-semibold mb-6">Category</div>
+            <LabelledCheckBox checked={allFilter} label="all" handleClick={handleClick} />
             {Object.keys(localCategoryFilter).map((val) => (
               <LabelledCheckBox
                 checked={localCategoryFilter[val]}

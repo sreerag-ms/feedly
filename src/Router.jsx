@@ -1,46 +1,46 @@
 /* eslint-disable react/prop-types */
 import { React, useState, useEffect } from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import PropsTypes from 'prop-types';
 import LandingPage from './components/LandingPage';
 import ArticlePage from './components/ArticlePage';
+
 // import helperFunctions from './components/common/helperFuncs';
 
-function AppRoutes({ allNews, setallNews, allCategories, filters, setfilters }) {
+function AppRoutes({ allNews, allCategories, filters, setfilters, allArticles }) {
   const [stateLoading, setstateLoading] = useState(true);
   useEffect(() => {
     setstateLoading(false);
     return () => {};
   }, [allNews]);
   return (
-    <Router>
+    <div>
       <Route
         exact
         path="/"
         component={() => (
           <LandingPage
-            allNews={allNews}
-            setallNews={setallNews}
             allCategories={allCategories}
             filters={filters}
             setfilters={setfilters}
+            allArticles={allArticles}
           />
         )}
       />
       <Route
         exact
         path="/:category/:id/readmore"
-        component={() => <ArticlePage allNews={allNews} stateLoading={stateLoading} />}
+        component={() => <ArticlePage allArticles={allArticles} stateLoading={stateLoading} />}
       />
-    </Router>
+    </div>
   );
 }
 AppRoutes.PropsTypes = {
   allNews: PropsTypes.array.isRequired,
-  setallNews: PropsTypes.func.isRequired,
   allCategories: PropsTypes.array.isRequired,
   filters: PropsTypes.object.isRequired,
   setfilters: PropsTypes.func.isRequired,
+  allArticles: PropsTypes.object.isRequired,
 };
 
 export default AppRoutes;

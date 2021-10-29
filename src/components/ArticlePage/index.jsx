@@ -1,64 +1,63 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/require-default-props */
-import { React, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 // import BodyWrapper from '../common/Wrapper';
+import { isEmpty } from 'ramda';
 import DetailedNewsSection from './DetailedNewsSection';
 import SmallNewsTabSection from '../common/smallNewsTabSection';
-import helperFuncs from '../common/helperFuncs';
 import LoadingScreen from '../common/LoadingScreen/index';
 // import SideBar from '../common/SideBar';
 // import inshortsApi from '../../apis/inshortsApi';
-
-function ArticlePage({
-  // allNews,
-  allNews,
-  stateLoading = true,
-}) {
-  // const [loading, setloading] = useState(true);
+function ArticlePage({ allArticles, stateLoading = true }) {
   if (stateLoading) {
     return <LoadingScreen showNav />;
   }
   const { category, id } = useParams();
-  const articles = allNews.filter((val) => val.category === category)[0].data;
-  const suggestions = helperFuncs.filterArticles(articles, id);
+  const [suggestedArticles, setSuggestedArticles] = useState([]);
+  const [selectedArticle, setSelectedArticle] = useState({});
 
-  const fetchReadMore = async () => {
-    // res = await inshortsApi.
+  const initState = () => {
+    const articlesOfSelectedCategory = [...(allArticles[category] ?? [])];
+    const index = articlesOfSelectedCategory.findIndex((val) => val.id === id);
+    if (index > -1) {
+      setSelectedArticle(articlesOfSelectedCategory[index]);
+      articlesOfSelectedCategory.splice(index, 1);
+    }
+    setSuggestedArticles(articlesOfSelectedCategory.slice(0, 4));
   };
 
   useEffect(() => {
-    fetchReadMore();
+    if (!isEmpty(allArticles)) {
+      initState();
+    }
     return () => {};
-  }, []);
-
-  // console.log('articleSideBar', showSideBar, setshowSideBar);
-
+  }, [allArticles]);
   return (
     <div>
-      {/* <BodyWrapper setshowSideBar={setshowSideBar} showSideBar={showSideBar}> */}
       <div className="flex flex-col flex-wrap ">
-        <DetailedNewsSection
-          title={articles[id].title}
-          content={articles[id].content}
-          imageUrl={articles[id].imageUrl}
-          author={articles[id].author}
-          time={articles[id].time}
-          date={articles[id].date}
-        />
-        <SmallNewsTabSection newsList={suggestions} />
+        {!isEmpty(selectedArticle) ? (
+          <DetailedNewsSection
+            title={selectedArticle.title}
+            content={selectedArticle.content}
+            imageUrl={selectedArticle.imageUrl}
+            author={selectedArticle.author}
+            time={selectedArticle.time}
+            date={selectedArticle.date}
+          />
+        ) : (
+          <></>
+        )}
+        <SmallNewsTabSection newsList={suggestedArticles} />
       </div>
       {/* </BodyWrapper> */}
     </div>
   );
 }
 ArticlePage.propTypes = {
-  allNews: PropTypes.array,
   stateLoading: PropTypes.bool,
-  // showSideBar: PropTypes.bool.isRequired,
-  // setshowSideBar: PropTypes.func.isRequired,
-  // allNews: PropTypes.array,
+  allArticles: PropTypes.object.isRequired,
 };
 
 export default ArticlePage;
