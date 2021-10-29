@@ -42,11 +42,6 @@ function App() {
       }
     });
   };
-  useEffect(() => {
-    console.log('allArticles', allArticles);
-
-    return () => {};
-  }, [allArticles]);
 
   useEffect(() => {
     fetchAllNews();
