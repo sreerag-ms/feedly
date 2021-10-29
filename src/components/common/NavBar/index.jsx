@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/style-prop-object */
+
 import React from 'react';
 import { Search, Notification, Filter } from '@bigbinary/neeto-icons';
 // import { Button } from '@bigbinary/neetoui';
 import { useHistory } from 'react-router';
+import PropTypes from 'prop-types';
 import ToolTip from '../RandomImage/Tooltip';
 
-function NavBar() {
+function NavBar({ setshowSideBar }) {
   const history = useHistory();
   const navigateHome = () => {
     history.push(`/`);
@@ -18,6 +20,9 @@ function NavBar() {
       },
       500,
     );
+  };
+  const handleFillterClick = () => {
+    setshowSideBar(true);
   };
   return (
     <nav className="fixed w-full bg-white px-5 h-16 shadow-lg flex flex-wrap flex-col justify-center align-middle z-50 ">
@@ -34,13 +39,7 @@ function NavBar() {
           <div className="flex  flex-row mt-1">
             <div className="px-5">
               <ToolTip content="Search">
-                <Search
-                  label="tool"
-                  tooltipProps={{
-                    content: 'Top',
-                    placement: 'top',
-                  }}
-                />
+                <Search />
               </ToolTip>
             </div>
             <div className="px-5">
@@ -53,7 +52,11 @@ function NavBar() {
           {/* <Button onClick={() => {}} style="secondary">
             ss
           </Button> */}
-          <button type="button" className="h8 border-2 px-5 py-1.5 bg-gray-200">
+          <button
+            onClick={() => handleFillterClick()}
+            type="button"
+            className="h8 border-2 px-5 py-1.5 bg-gray-200"
+          >
             <div className="flex flex-row">
               Filter
               <Filter className="mx-2" />
@@ -64,5 +67,7 @@ function NavBar() {
     </nav>
   );
 }
-
+NavBar.propTypes = {
+  setshowSideBar: PropTypes.bool.isRequired,
+};
 export default NavBar;

@@ -9,7 +9,6 @@ import NavBar from '../NavBar';
 function LoadingScreen({ showNav = false }) {
   return (
     <div>
-      {showNav ? <NavBar /> : <div />}
       <div className="flex flex-col h-screen w-full items-center justify-center">
         <PageLoader />
       </div>

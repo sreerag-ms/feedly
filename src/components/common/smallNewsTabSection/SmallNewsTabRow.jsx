@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import SmallNewsTab from '../SmallNewsTab';
-import commonFunctions from '../common/commonFunctions';
+import SmallNewsTab from './SmallNewsTab';
+import commonFunctions from '../commonFunctions';
 
 function SmallNewsTabRow({ rowData = [] }) {
   const [first, second] = rowData;
