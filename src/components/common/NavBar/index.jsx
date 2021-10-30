@@ -20,7 +20,7 @@ const NavBar = ({ setShowSideBar, setShowSearch }) => {
     setShowSideBar(true);
   };
   return (
-    <nav className="fixed w-full bg-white px-5 h-16 shadow-lg flex flex-wrap flex-col justify-center align-middle z-50 ">
+    <nav className="fixed w-full z-10 bg-white px-5 h-16 shadow-lg flex flex-wrap flex-col justify-center align-middle z-50 ">
       <div className="flex flex-wrap flex-row justify-between text-center ">
         <button
           type="button"
@@ -49,9 +49,7 @@ const NavBar = ({ setShowSideBar, setShowSearch }) => {
                 <button
                   type="button"
                   className="cursor-pointer  ease-in-out duration-300 hover:opacity-50 focus:outline-none"
-                  onClick={() => {
-                    console.log('Subscribe for more');
-                  }}
+                  onClick={() => {}}
                 >
                   <Notification title="tool" />
                 </button>

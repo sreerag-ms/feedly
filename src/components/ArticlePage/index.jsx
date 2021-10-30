@@ -49,7 +49,6 @@ const ArticlePage = ({ allArticles, stateLoading = true }) => {
         )}
         <SmallNewsTabSection newsList={suggestedArticles} />
       </div>
-      {/* </BodyWrapper> */}
     </div>
   );
 };

@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/style-prop-object */
 import React from 'react';
-// import { LoremIpsum } from 'react-lorem-ipsum';
 import { Button } from '@bigbinary/neetoui';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';

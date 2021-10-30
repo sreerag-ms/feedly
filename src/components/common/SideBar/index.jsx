@@ -5,7 +5,6 @@ import { Pane, Button } from '@bigbinary/neetoui/v2';
 import { Check } from '@bigbinary/neeto-icons';
 import { useHistory } from 'react-router';
 import LabelledCheckBox from './LabelledCheckBox';
-// eslint-disable-next-line react/prop-types
 
 const SideBar = ({ showSideBar, setShowSideBar, filters, setFilters, allCategories }) => {
   const history = useHistory();

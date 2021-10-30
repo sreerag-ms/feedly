@@ -1,13 +1,10 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-curly-brace-presence */
-// eslint-disable-next-line no-unused-vars
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
-// eslint-disable-next-line no-unused-vars
-import { PageLoader } from '@bigbinary/neetoui';
 
 // :TODO implement image Loading
+import { PageLoader } from '@bigbinary/neetoui';
 
 const RandomImage = ({ width = 100, height = 100, random = true, imageUrl = '' }) => {
   const [imageLoading, setImageLoading] = useState(true);

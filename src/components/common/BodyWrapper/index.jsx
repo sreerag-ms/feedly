@@ -1,12 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/require-default-props */
 import React from 'react';
-// import { Header } from '@bigbinary/neetoui/v2';
 import PropsTypes from 'prop-types';
 import NavBar from '../NavBar';
 import SideBar from '../SideBar';
 
-// eslint-disable-next-line no-unused-vars
 const BodyWrapper = ({
   children,
   setShowSideBar,
@@ -14,7 +13,6 @@ const BodyWrapper = ({
   showNavBar = true,
   allCategories,
   filters,
-  // eslint-disable-next-line react/prop-types
   history,
   setFilters,
   setShowSearch,

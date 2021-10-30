@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import LoremIpsum from 'react-lorem-ipsum';
 import { Copy } from '@bigbinary/neeto-icons';
 import RandomImage from 'commonComponents/RandomImage';
-// import { Typography } from '@bigbinary/neetoui';
 
 const DetailedNewsSection = ({ title, imageUrl, author, time, date, content }) => (
   <div className="flex flex-wrap flex-col my-8">
@@ -37,7 +36,6 @@ const DetailedNewsSection = ({ title, imageUrl, author, time, date, content }) =
   </div>
 );
 DetailedNewsSection.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types
   title: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
