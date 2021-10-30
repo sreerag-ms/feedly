@@ -6,12 +6,12 @@ import PropsTypes from 'prop-types';
 import { Close } from '@bigbinary/neeto-icons';
 import { capitalize } from 'commonFunctions/stringHelperFunctions';
 // eslint-disable-next-line react/prop-types
-const FilterTab = ({ title, setfilters, filters }) => {
+const FilterTab = ({ title, setFilters, filters }) => {
   const handleDelete = (item) => {
     if (item === 'archived') {
-      setfilters({ ...filters, archived: false });
+      setFilters({ ...filters, archived: false });
     } else {
-      setfilters({
+      setFilters({
         ...filters,
         // eslint-disable-next-line react/prop-types
         categories: filters.categories.filter((val) => val !== item),
@@ -31,21 +31,21 @@ const FilterTab = ({ title, setfilters, filters }) => {
   );
 };
 // eslint-disable-next-line react/prop-types
-const FilterTabBar = ({ setfilters, filters }) => {
+const FilterTabBar = ({ setFilters, filters }) => {
   let archived;
   let categories;
   ({ archived, categories } = filters);
   return (
     <div className="mx-10  mt-10  w-max  flex flex-row justify-start items-center">
       {categories.map((val) => (
-        <FilterTab title={val} setfilters={setfilters} filters={filters} />
+        <FilterTab title={val} setFilters={setFilters} filters={filters} />
       ))}
-      {archived ? <FilterTab title="archived" setfilters={setfilters} filters={filters} /> : <></>}
+      {archived ? <FilterTab title="archived" setFilters={setFilters} filters={filters} /> : <></>}
     </div>
   );
 };
 FilterTabBar.prototypes = {
   filters: PropsTypes.object.isRequired,
-  setfilters: PropsTypes.func.isRequired,
+  setFilters: PropsTypes.func.isRequired,
 };
 export default FilterTabBar;

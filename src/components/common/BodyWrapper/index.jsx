@@ -9,26 +9,26 @@ import SideBar from '../SideBar';
 // eslint-disable-next-line no-unused-vars
 const BodyWrapper = ({
   children,
-  setshowSideBar,
+  setShowSideBar,
   showSideBar,
   showNavBar = true,
   allCategories,
   filters,
   // eslint-disable-next-line react/prop-types
   history,
-  setfilters,
+  setFilters,
   setShowSearch,
 }) => (
   <div>
     <SideBar
       showSideBar={showSideBar}
-      setshowSideBar={setshowSideBar}
+      setShowSideBar={setShowSideBar}
       allCategories={allCategories}
       filters={filters}
-      setfilters={setfilters}
+      setFilters={setFilters}
     />
     {showNavBar ? (
-      <NavBar setShowSearch={setShowSearch} setshowSideBar={setshowSideBar} history={history} />
+      <NavBar setShowSearch={setShowSearch} setShowSideBar={setShowSideBar} history={history} />
     ) : (
       <></>
     )}
@@ -37,12 +37,12 @@ const BodyWrapper = ({
 );
 BodyWrapper.propTypes = {
   children: PropsTypes.node.isRequired,
-  setshowSideBar: PropsTypes.func.isRequired,
+  setShowSideBar: PropsTypes.func.isRequired,
   showSideBar: PropsTypes.bool.isRequired,
   showNavBar: PropsTypes.bool,
   allCategories: PropsTypes.array.isRequired,
   filters: PropsTypes.object.isRequired,
-  setfilters: PropsTypes.func.isRequired,
+  setFilters: PropsTypes.func.isRequired,
   setShowSearch: PropsTypes.func.isRequired,
 };
 export default BodyWrapper;

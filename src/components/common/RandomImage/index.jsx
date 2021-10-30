@@ -7,9 +7,10 @@ import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import { PageLoader } from '@bigbinary/neetoui';
 
+// :TODO implement image Loading
+
 const RandomImage = ({ width = 100, height = 100, random = true, imageUrl = '' }) => {
-  const [imageLoading, setimageLoading] = useState(true);
-  //   const [imageLoading, setimageLoading] = useState(true);
+  const [imageLoading, setImageLoading] = useState(true);
   return (
     <div className={`bg-gray-100 w-${width} h-${height} overflow-hidden`}>
       <div className={`relative items-center h-${height} z-1`}>
@@ -19,7 +20,7 @@ const RandomImage = ({ width = 100, height = 100, random = true, imageUrl = '' }
             src={`https://picsum.photos/${width}/${height}`}
             alt="Related pic"
             onLoad={() => {
-              setimageLoading(false);
+              setImageLoading(false);
             }}
           />
         ) : (
@@ -28,7 +29,7 @@ const RandomImage = ({ width = 100, height = 100, random = true, imageUrl = '' }
             src={imageUrl}
             alt="Related pic"
             onLoad={() => {
-              setimageLoading(false);
+              setImageLoading(false);
             }}
           />
         )}

@@ -5,11 +5,11 @@ import PropsTypes from 'prop-types';
 import LandingPage from './components/LandingPage';
 import ArticlePage from './components/ArticlePage';
 
-const AppRoutes = ({ allCategories, filters, setfilters, allArticles }) => {
-  const [stateLoading, setstateLoading] = useState(true);
+const AppRoutes = ({ allCategories, filters, setFilters, allArticles }) => {
+  const [stateLoading, setStateLoading] = useState(true);
 
   useEffect(() => {
-    if (Object.keys(allArticles).length === allCategories.length) setstateLoading(false);
+    if (Object.keys(allArticles).length === allCategories.length) setStateLoading(false);
     return () => {};
   }, [allArticles]);
 
@@ -22,7 +22,7 @@ const AppRoutes = ({ allCategories, filters, setfilters, allArticles }) => {
           <LandingPage
             allCategories={allCategories}
             filters={filters}
-            setfilters={setfilters}
+            setFilters={setFilters}
             allArticles={allArticles}
           />
         )}
@@ -38,7 +38,7 @@ const AppRoutes = ({ allCategories, filters, setfilters, allArticles }) => {
 AppRoutes.PropsTypes = {
   allCategories: PropsTypes.array.isRequired,
   filters: PropsTypes.object.isRequired,
-  setfilters: PropsTypes.func.isRequired,
+  setFilters: PropsTypes.func.isRequired,
   allArticles: PropsTypes.object.isRequired,
 };
 

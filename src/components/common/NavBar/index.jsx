@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import ToolTip from 'commonComponents/Tooltip';
 
-const NavBar = ({ setshowSideBar, setShowSearch }) => {
+const NavBar = ({ setShowSideBar, setShowSearch }) => {
   const history = useHistory();
   const navigateHome = () => {
     history.push(`/`);
@@ -17,7 +17,7 @@ const NavBar = ({ setshowSideBar, setShowSearch }) => {
     );
   };
   const handleFilterClick = () => {
-    setshowSideBar(true);
+    setShowSideBar(true);
   };
   return (
     <nav className="fixed w-full bg-white px-5 h-16 shadow-lg flex flex-wrap flex-col justify-center align-middle z-50 ">
@@ -76,7 +76,7 @@ const NavBar = ({ setshowSideBar, setShowSearch }) => {
   );
 };
 NavBar.propTypes = {
-  setshowSideBar: PropTypes.func.isRequired,
+  setShowSideBar: PropTypes.func.isRequired,
   setShowSearch: PropTypes.func.isRequired,
 };
 export default NavBar;

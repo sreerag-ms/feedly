@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from 'react-router';
-import BodyWrapper from 'components/Common/Wrapper';
+import BodyWrapper from 'components/Common/BodyWrapper';
 import SearchPortal from 'components/SearchPortal';
 import { addIdToArticles } from 'commonFunctions/stateHelperFunctions';
 import inshortsApi from 'apis/inshortsApi';
@@ -12,11 +12,11 @@ const App = () => {
   const history = useHistory();
   const allCategories = ['business', 'sports', 'world', 'technology', 'national'];
   const [allArticles, setAllArticles] = useState({});
-  const [showSideBar, setshowSideBar] = useState(false);
+  const [showSideBar, setShowSideBar] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const [filters, setfilters] = useState({
+  const [filters, setFilters] = useState({
     archived: true,
-    categories: ['sports', 'world', 'technology'],
+    categories: ['business', 'sports', 'world', 'technology', 'national'],
   });
 
   const fetchAllNews = async () => {
@@ -45,20 +45,19 @@ const App = () => {
       <BodyWrapper
         showSearch={showSearch}
         setShowSearch={setShowSearch}
-        setshowSideBar={setshowSideBar}
+        setShowSideBar={setShowSideBar}
         showSideBar={showSideBar}
         allCategories={allCategories}
         filters={filters}
-        setfilters={setfilters}
+        setFilters={setFilters}
         history={history}
       >
         <AppRoutes
           allArticles={allArticles}
           allCategories={allCategories}
-          showSideBar={showSideBar}
-          setshowSideBar={setshowSideBar}
+          setShowSideBar={setShowSideBar}
           filters={filters}
-          setfilters={setfilters}
+          setFilters={setFilters}
         />
       </BodyWrapper>
       <SearchPortal showSearch={showSearch} setShowSearch={setShowSearch} />

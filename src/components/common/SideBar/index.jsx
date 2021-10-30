@@ -7,11 +7,11 @@ import { useHistory } from 'react-router';
 import LabelledCheckBox from './LabelledCheckBox';
 // eslint-disable-next-line react/prop-types
 
-const SideBar = ({ showSideBar, setshowSideBar, filters, setfilters, allCategories }) => {
+const SideBar = ({ showSideBar, setShowSideBar, filters, setFilters, allCategories }) => {
   const history = useHistory();
 
-  const [localCategoryFilter, setlocalCategoryFilter] = useState({});
-  const [localArchivedFilter, setlocalArchivedFilter] = useState(false);
+  const [localCategoryFilter, setLocalCategoryFilter] = useState({});
+  const [localArchivedFilter, setLocalArchivedFilter] = useState(false);
   const [allFilter, setAllFilter] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +19,7 @@ const SideBar = ({ showSideBar, setshowSideBar, filters, setfilters, allCategori
     setAllFilter(Object.values(localCategoryFilter).reduce((a, b) => b && a, true));
   };
   const checkAllFilters = () => {
-    setlocalCategoryFilter(allCategories.reduce((acc, val) => ({ ...acc, [val]: true }), {}));
+    setLocalCategoryFilter(allCategories.reduce((acc, val) => ({ ...acc, [val]: true }), {}));
   };
 
   const resetLocalStates = () => {
@@ -27,15 +27,15 @@ const SideBar = ({ showSideBar, setshowSideBar, filters, setfilters, allCategori
     allCategories.forEach((val) => {
       localCategory[val] = filters.categories.includes(val);
     });
-    setlocalCategoryFilter(localCategory);
-    setlocalArchivedFilter(filters.archived);
+    setLocalCategoryFilter(localCategory);
+    setLocalArchivedFilter(filters.archived);
   };
 
   const handleClick = (event) => {
     const category = event.target.id;
     const status = event.target.checked;
     if (category === 'archived') {
-      setlocalArchivedFilter(status);
+      setLocalArchivedFilter(status);
     } else if (category === 'all') {
       if (status) {
         checkAllFilters();
@@ -46,22 +46,22 @@ const SideBar = ({ showSideBar, setshowSideBar, filters, setfilters, allCategori
     } else {
       const cat = { ...localCategoryFilter };
       cat[category] = status;
-      setlocalCategoryFilter({ ...cat });
+      setLocalCategoryFilter({ ...cat });
     }
   };
 
   const saveFilter = () => {
-    setfilters({
+    setFilters({
       archived: localArchivedFilter,
       categories: Object.keys(localCategoryFilter).filter((val) => localCategoryFilter[val]),
     });
-    setshowSideBar(false);
+    setShowSideBar(false);
     history.push('/');
   };
 
   const cancelFilter = () => {
     resetLocalStates();
-    setshowSideBar(false);
+    setShowSideBar(false);
   };
 
   useEffect(() => {
@@ -121,9 +121,9 @@ const SideBar = ({ showSideBar, setshowSideBar, filters, setfilters, allCategori
 };
 SideBar.propTypes = {
   showSideBar: PropTypes.bool.isRequired,
-  setshowSideBar: PropTypes.func.isRequired,
+  setShowSideBar: PropTypes.func.isRequired,
   filters: PropTypes.object.isRequired,
-  setfilters: PropTypes.func.isRequired,
+  setFilters: PropTypes.func.isRequired,
   allCategories: PropTypes.array.isRequired,
 };
 export default SideBar;
