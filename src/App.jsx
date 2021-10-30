@@ -6,6 +6,7 @@ import BodyWrapper from 'components/Common/BodyWrapper';
 import SearchPortal from 'components/SearchPortal';
 import { addIdToArticles } from 'commonFunctions/stateHelperFunctions';
 import inshortsApi from 'apis/inshortsApi';
+import { initializeLogger } from 'commonFunctions/logger';
 import AppRoutes from './Router';
 
 const App = () => {
@@ -19,7 +20,7 @@ const App = () => {
     categories: ['business', 'sports', 'world', 'technology', 'national'],
   });
 
-  const fetchAllNews = async () => {
+  const initState = async () => {
     let allArt = {};
     allCategories.forEach(async (val, index) => {
       try {
@@ -36,7 +37,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchAllNews();
+    initializeLogger();
+    initState();
     return () => {};
   }, []);
 
