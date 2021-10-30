@@ -4,6 +4,22 @@
     "es2021": true
   },
 
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["apis", "./src/apis"],
+          ["components", "./src/components"],
+          ["assets", "./src/assets"],
+          ["images", "./src/assets/images"],
+          ["commonComponents", "./src/components/Common"],
+          ["commonFunctions", "./src/common"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
+    }
+  },
+
   "extends": ["plugin:react/recommended", "airbnb", "prettier"],
   "parserOptions": {
     "allowImportExportEverywhere": false,

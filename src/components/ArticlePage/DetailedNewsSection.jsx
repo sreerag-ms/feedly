@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LoremIpsum from 'react-lorem-ipsum';
 import { Copy } from '@bigbinary/neeto-icons';
-import RandomImage from '../common/RandomImage';
+import RandomImage from 'commonComponents/RandomImage';
 // import { Typography } from '@bigbinary/neetoui';
 
 const DetailedNewsSection = ({ title, imageUrl, author, time, date, content }) => (

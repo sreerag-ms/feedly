@@ -4,7 +4,7 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 import { Close } from '@bigbinary/neeto-icons';
-import { capitalize } from '../../common/stringHelperFunctions';
+import { capitalize } from 'commonFunctions/stringHelperFunctions';
 // eslint-disable-next-line react/prop-types
 const FilterTab = ({ title, setfilters, filters }) => {
   const handleDelete = (item) => {

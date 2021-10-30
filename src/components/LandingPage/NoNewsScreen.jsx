@@ -3,8 +3,8 @@ import { Edit } from '@bigbinary/neeto-icons';
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import NotFound from '../../assets/images/Vector.png';
-import SmallNewsTabSection from '../common/SmallNewsTabSection';
+import SmallNewsTabSection from 'commonComponents/SmallNewsTabSection';
+import NotFound from 'images/Vector.png';
 import WriteToUsModal from './Form/WriteToUsModal';
 
 const NoNews = ({ allArticles }) => {

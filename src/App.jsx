@@ -2,11 +2,11 @@ import { React, useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from 'react-router';
-import inshortsApi from './apis/inshortsApi';
-import { addIdToArticles } from './common/stateHelperFunctions';
+import BodyWrapper from 'components/Common/Wrapper';
+import SearchPortal from 'components/SearchPortal';
+import { addIdToArticles } from 'commonFunctions/stateHelperFunctions';
+import inshortsApi from 'apis/inshortsApi';
 import AppRoutes from './Router';
-import BodyWrapper from './components/common/Wrapper';
-import SearchPortal from './components/SearchPortal';
 
 const App = () => {
   const history = useHistory();
@@ -29,7 +29,7 @@ const App = () => {
         setAllArticles(allArt);
       } catch (e) {
         if (e.message === 'Network error') {
-          history.push();
+          history.push('');
         }
       }
     });

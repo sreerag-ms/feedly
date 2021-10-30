@@ -3,13 +3,11 @@
 import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-// import BodyWrapper from '../common/Wrapper';
 import { isEmpty } from 'ramda';
+import SmallNewsTabSection from 'commonComponents/SmallNewsTabSection';
+import LoadingScreen from 'commonComponents/LoadingScreen';
 import DetailedNewsSection from './DetailedNewsSection';
-import SmallNewsTabSection from '../common/SmallNewsTabSection';
-import LoadingScreen from '../common/LoadingScreen/index';
-// import SideBar from '../common/SideBar';
-// import inshortsApi from '../../apis/inshortsApi';
+
 const ArticlePage = ({ allArticles, stateLoading = true }) => {
   if (stateLoading) {
     return <LoadingScreen showNav />;

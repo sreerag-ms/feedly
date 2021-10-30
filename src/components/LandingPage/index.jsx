@@ -4,9 +4,9 @@
 /* eslint-disable react/require-default-props */
 import { React, useEffect, useState } from 'react';
 import PropTypes, { object } from 'prop-types';
+import { filterFive } from 'commonFunctions/stateHelperFunctions';
+import LoadingScreen from 'commonComponents/LoadingScreen';
 import NewsSection from './NewsSection';
-import { filterFive } from '../../common/stateHelperFunctions';
-import LoadingScreen from '../Common/LoadingScreen';
 import FilterTabBar from './FilterTabView';
 import NoNews from './NoNewsScreen';
 

@@ -5,18 +5,19 @@ import PropsTypes from 'prop-types';
 import LandingPage from './components/LandingPage';
 import ArticlePage from './components/ArticlePage';
 
-// import helperFunctions from './components/common/helperFuncs';
-
 const AppRoutes = ({ allCategories, filters, setfilters, allArticles }) => {
   const [stateLoading, setstateLoading] = useState(true);
+
   useEffect(() => {
-    setstateLoading(false);
+    if (Object.keys(allArticles).length === allCategories.length) setstateLoading(false);
     return () => {};
   }, [allArticles]);
+
   return (
     <div>
       <Route
         path="/"
+        exact
         component={() => (
           <LandingPage
             allCategories={allCategories}

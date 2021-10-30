@@ -2,7 +2,7 @@ import React from 'react';
 import { Search, Notification, Filter } from '@bigbinary/neeto-icons';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
-import ToolTip from '../RandomImage/Tooltip';
+import ToolTip from 'commonComponents/Tooltip';
 
 const NavBar = ({ setshowSideBar, setShowSearch }) => {
   const history = useHistory();

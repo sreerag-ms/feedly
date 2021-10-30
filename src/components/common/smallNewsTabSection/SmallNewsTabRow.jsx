@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { subTitleGenerator } from 'commonFunctions/stringHelperFunctions';
 import SmallNewsTab from './SmallNewsTab';
-import { subTitleGenerator } from '../../../common/stringHelperFunctions';
 
 const SmallNewsTabRow = ({ rowData = [] }) => {
   const [first, second] = rowData;

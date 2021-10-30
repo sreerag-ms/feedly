@@ -6,8 +6,8 @@ import React from 'react';
 import { Button } from '@bigbinary/neetoui';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import RandomImage from '../../RandomImage';
-import { articleTrimmer } from '../../../../common/stringHelperFunctions';
+import { articleTrimmer } from 'commonFunctions/stringHelperFunctions';
+import RandomImage from 'commonComponents/RandomImage';
 
 const SmallNewsTab = ({ title, content = '', id = '#', subtitle, imageUrl, category }) => {
   const history = useHistory();

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { capitalize, subTitleGenerator } from 'commonFunctions/stringHelperFunctions';
+import SmallNewsTabSection from 'commonComponents/SmallNewsTabSection';
 import LargeNewsTab from './LargeNewsTab';
 // import SmallNewsTab from '../SmallNewsTab';
-import SmallNewsTabSection from '../../common/SmallNewsTabSection';
-import { capitalize, subTitleGenerator } from '../../../common/stringHelperFunctions';
 
 const NewsSection = ({ category, articles }) => {
   const [majorArticle, ...minorArticles] = articles;
