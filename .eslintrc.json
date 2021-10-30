@@ -9,11 +9,11 @@
       "alias": {
         "map": [
           ["apis", "./src/apis"],
-          ["components", "./src/components"],
           ["assets", "./src/assets"],
-          ["images", "./src/assets/images"],
+          ["components", "./src/components"],
           ["commonComponents", "./src/components/Common"],
-          ["commonFunctions", "./src/common"]
+          ["commonFunctions", "./src/common"],
+          ["images", "./src/assets/images"]
         ],
         "extensions": [".ts", ".js", ".jsx", ".json"]
       }

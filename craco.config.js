@@ -1,27 +1,23 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const CracoAlias = require("craco-alias");
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable global-require */
+/* eslint-disable import/no-unresolved */
+
+const path = require("path");
 
 module.exports = {
-  plugins: [
-    {
-      plugin: CracoAlias,
-      options: {
-        baseUrl: "./src",
-        source: "options",
-        aliases: {
-          apis: "apis",
-          components: "components",
-          assets: "assets",
-          images: "assets/images",
-          commonFunctions: "common",
-          commonComponents: "components/Common",
-        },
-      },
-    },
-  ],
   style: {
     postcss: {
       plugins: [require("tailwindcss"), require("autoprefixer")],
+    },
+  },
+  webpack: {
+    alias: {
+      apis: path.resolve(__dirname, "src/apis"),
+      assets: path.resolve(__dirname, "src/assets"),
+      components: path.resolve(__dirname, "src/components"),
+      commonFunctions: path.resolve(__dirname, "src/common"),
+      commonComponents: path.resolve(__dirname, "src/components/Common"),
+      images: path.resolve(__dirname, "src/assets/images"),
     },
   },
 };
