@@ -10,7 +10,7 @@ import { useHistory } from 'react-router';
 import RandomImage from '../../../common/RandomImage';
 import { articleTrimmer } from '../../../../common/stringHelperFunctions';
 
-function LargeNewsTab({ title, subtitle, content, id, imageUrl, category }) {
+const LargeNewsTab = ({ title, subtitle, content, id, imageUrl, category }) => {
   const history = useHistory();
   const navigate = () => {
     history.push(`/${category}/${id}/readmore`);
@@ -48,7 +48,7 @@ function LargeNewsTab({ title, subtitle, content, id, imageUrl, category }) {
       </div>
     </div>
   );
-}
+};
 LargeNewsTab.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,

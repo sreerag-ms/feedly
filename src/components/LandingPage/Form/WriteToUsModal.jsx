@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { Check } from '@bigbinary/neeto-icons';
 import dummyPost from '../../../apis/dummyPost';
 
-function WriteToUsModal({ showWriteToUs, setShowWriteToUs }) {
+const WriteToUsModal = ({ showWriteToUs, setShowWriteToUs }) => {
   const responseSchema = Yup.object().shape({
     name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
     response: Yup.string().min(10, 'Too Short!').max(50, 'Too Long!'),
@@ -20,7 +20,6 @@ function WriteToUsModal({ showWriteToUs, setShowWriteToUs }) {
   const handleSubmit = async (values) => {
     try {
       const resp = await dummyPost.send('https://jsonplaceholder.typicode.com/posts', values);
-      console.log(resp);
     } catch (err) {
       console.error(err);
     }
@@ -92,7 +91,7 @@ function WriteToUsModal({ showWriteToUs, setShowWriteToUs }) {
       </Formik>
     </Modal>
   );
-}
+};
 WriteToUsModal.propTypes = {
   showWriteToUs: PropTypes.bool.isRequired,
   setShowWriteToUs: PropTypes.func.isRequired,

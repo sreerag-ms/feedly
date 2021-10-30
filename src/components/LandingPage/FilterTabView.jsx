@@ -6,7 +6,7 @@ import PropsTypes from 'prop-types';
 import { Close } from '@bigbinary/neeto-icons';
 import { capitalize } from '../../common/stringHelperFunctions';
 // eslint-disable-next-line react/prop-types
-function FilterTab({ title, setfilters, filters }) {
+const FilterTab = ({ title, setfilters, filters }) => {
   const handleDelete = (item) => {
     if (item === 'archived') {
       setfilters({ ...filters, archived: false });
@@ -29,9 +29,9 @@ function FilterTab({ title, setfilters, filters }) {
       </div>
     </div>
   );
-}
+};
 // eslint-disable-next-line react/prop-types
-function FilterTabBar({ setfilters, filters }) {
+const FilterTabBar = ({ setfilters, filters }) => {
   let archived;
   let categories;
   ({ archived, categories } = filters);
@@ -43,7 +43,7 @@ function FilterTabBar({ setfilters, filters }) {
       {archived ? <FilterTab title="archived" setfilters={setfilters} filters={filters} /> : <></>}
     </div>
   );
-}
+};
 FilterTabBar.prototypes = {
   filters: PropsTypes.object.isRequired,
   setfilters: PropsTypes.func.isRequired,

@@ -5,7 +5,7 @@ import LargeNewsTab from './LargeNewsTab';
 import SmallNewsTabSection from '../../common/SmallNewsTabSection';
 import { capitalize, subTitleGenerator } from '../../../common/stringHelperFunctions';
 
-function NewsSection({ category, articles }) {
+const NewsSection = ({ category, articles }) => {
   const [majorArticle, ...minorArticles] = articles;
 
   return (
@@ -27,7 +27,7 @@ function NewsSection({ category, articles }) {
       <SmallNewsTabSection newsList={minorArticles} />
     </div>
   );
-}
+};
 NewsSection.propTypes = {
   category: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types

@@ -6,9 +6,10 @@ import inshortsApi from './apis/inshortsApi';
 import { addIdToArticles } from './common/stateHelperFunctions';
 import AppRoutes from './Router';
 import BodyWrapper from './components/common/Wrapper';
+import SearchPortal from './components/SearchPortal';
 
-function App() {
-  const history = useHistory;
+const App = () => {
+  const history = useHistory();
   const allCategories = ['business', 'sports', 'world', 'technology', 'national'];
   const [allArticles, setAllArticles] = useState({});
   const [showSideBar, setshowSideBar] = useState(false);
@@ -27,7 +28,9 @@ function App() {
         allArt = { ...allArt, [val]: markedDataArray };
         setAllArticles(allArt);
       } catch (e) {
-        console.log(e);
+        if (e.message === 'Network error') {
+          history.push();
+        }
       }
     });
   };
@@ -58,8 +61,9 @@ function App() {
           setfilters={setfilters}
         />
       </BodyWrapper>
+      <SearchPortal showSearch={showSearch} setShowSearch={setShowSearch} />
     </Router>
   );
-}
+};
 
 export default App;

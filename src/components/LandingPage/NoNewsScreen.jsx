@@ -7,7 +7,7 @@ import NotFound from '../../assets/images/Vector.png';
 import SmallNewsTabSection from '../common/SmallNewsTabSection';
 import WriteToUsModal from './Form/WriteToUsModal';
 
-function NoNews({ allArticles }) {
+const NoNews = ({ allArticles }) => {
   const [showWriteToUs, setShowWriteToUs] = useState(false);
   /// [count] of news, Preferably even.
   const randomNews = (count) => {
@@ -35,7 +35,7 @@ function NoNews({ allArticles }) {
       <WriteToUsModal showWriteToUs={showWriteToUs} setShowWriteToUs={setShowWriteToUs} />
     </div>
   );
-}
+};
 NoNews.propTypes = {
   allArticles: PropTypes.object.isRequired,
 };

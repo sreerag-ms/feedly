@@ -10,7 +10,7 @@ import SmallNewsTabSection from '../common/SmallNewsTabSection';
 import LoadingScreen from '../common/LoadingScreen/index';
 // import SideBar from '../common/SideBar';
 // import inshortsApi from '../../apis/inshortsApi';
-function ArticlePage({ allArticles, stateLoading = true }) {
+const ArticlePage = ({ allArticles, stateLoading = true }) => {
   if (stateLoading) {
     return <LoadingScreen showNav />;
   }
@@ -54,7 +54,7 @@ function ArticlePage({ allArticles, stateLoading = true }) {
       {/* </BodyWrapper> */}
     </div>
   );
-}
+};
 ArticlePage.propTypes = {
   stateLoading: PropTypes.bool,
   allArticles: PropTypes.object.isRequired,

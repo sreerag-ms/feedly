@@ -6,7 +6,7 @@ import { React, useEffect, useState } from 'react';
 import PropTypes, { object } from 'prop-types';
 import NewsSection from './NewsSection';
 import { filterFive } from '../../common/stateHelperFunctions';
-import LoadingScreen from '../common/LoadingScreen';
+import LoadingScreen from '../Common/LoadingScreen';
 import FilterTabBar from './FilterTabView';
 import NoNews from './NoNewsScreen';
 
@@ -14,9 +14,6 @@ const LandingPage = ({ allArticles, filters, setfilters }) => {
   const [trimmedAllArticles, settrimmedAllArticles] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isNewsEmpty, setisNewsEmpty] = useState(true);
-  useEffect(() => {
-    // if (Object.keys(trimmedAllArticles).length > 0) setloading(false);
-  }, [trimmedAllArticles]);
 
   useEffect(() => {
     const tempTrimmedNews = filterFive(filters, 5, allArticles);
@@ -27,7 +24,6 @@ const LandingPage = ({ allArticles, filters, setfilters }) => {
     if (!isEmpty) setIsLoading(false);
     if (Object.keys(trimmedAllArticles).length >= filters.categories.length) setIsLoading(false);
     setisNewsEmpty(isEmpty);
-    console.log(isEmpty, tempTrimmedNews);
     return () => {};
   }, [filters, allArticles]);
 
@@ -40,9 +36,7 @@ const LandingPage = ({ allArticles, filters, setfilters }) => {
         Object.keys(trimmedAllArticles).map((val) =>
           trimmedAllArticles[val].length > 0 ? (
             <NewsSection key={val} category={val} articles={trimmedAllArticles[val]} />
-          ) : (
-            <></>
-          ),
+          ) : null,
         )
       ) : (
         <NoNews allArticles={allArticles} />

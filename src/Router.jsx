@@ -7,7 +7,7 @@ import ArticlePage from './components/ArticlePage';
 
 // import helperFunctions from './components/common/helperFuncs';
 
-function AppRoutes({ allCategories, filters, setfilters, allArticles }) {
+const AppRoutes = ({ allCategories, filters, setfilters, allArticles }) => {
   const [stateLoading, setstateLoading] = useState(true);
   useEffect(() => {
     setstateLoading(false);
@@ -33,7 +33,7 @@ function AppRoutes({ allCategories, filters, setfilters, allArticles }) {
       />
     </div>
   );
-}
+};
 AppRoutes.PropsTypes = {
   allCategories: PropsTypes.array.isRequired,
   filters: PropsTypes.object.isRequired,

@@ -7,7 +7,7 @@ import { useHistory } from 'react-router';
 import LabelledCheckBox from './LabelledCheckBox';
 // eslint-disable-next-line react/prop-types
 
-function SideBar({ showSideBar, setshowSideBar, filters, setfilters, allCategories }) {
+const SideBar = ({ showSideBar, setshowSideBar, filters, setfilters, allCategories }) => {
   const history = useHistory();
 
   const [localCategoryFilter, setlocalCategoryFilter] = useState({});
@@ -118,7 +118,7 @@ function SideBar({ showSideBar, setshowSideBar, filters, setfilters, allCategori
       </Pane.Footer>
     </Pane>
   );
-}
+};
 SideBar.propTypes = {
   showSideBar: PropTypes.bool.isRequired,
   setshowSideBar: PropTypes.func.isRequired,
