@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import { PageLoader } from '@bigbinary/neetoui';
 
-function RandomImage({ width = 100, height = 100, random = true, imageUrl = '' }) {
+const RandomImage = ({ width = 100, height = 100, random = true, imageUrl = '' }) => {
   const [imageLoading, setimageLoading] = useState(true);
   //   const [imageLoading, setimageLoading] = useState(true);
   return (
@@ -35,7 +35,7 @@ function RandomImage({ width = 100, height = 100, random = true, imageUrl = '' }
       </div>
     </div>
   );
-}
+};
 RandomImage.propTypes = {
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,

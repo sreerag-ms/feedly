@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 // import BodyWrapper from '../common/Wrapper';
 import { isEmpty } from 'ramda';
 import DetailedNewsSection from './DetailedNewsSection';
-import SmallNewsTabSection from '../common/smallNewsTabSection';
+import SmallNewsTabSection from '../common/SmallNewsTabSection';
 import LoadingScreen from '../common/LoadingScreen/index';
 // import SideBar from '../common/SideBar';
 // import inshortsApi from '../../apis/inshortsApi';

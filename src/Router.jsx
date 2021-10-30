@@ -7,16 +7,15 @@ import ArticlePage from './components/ArticlePage';
 
 // import helperFunctions from './components/common/helperFuncs';
 
-function AppRoutes({ allNews, allCategories, filters, setfilters, allArticles }) {
+function AppRoutes({ allCategories, filters, setfilters, allArticles }) {
   const [stateLoading, setstateLoading] = useState(true);
   useEffect(() => {
     setstateLoading(false);
     return () => {};
-  }, [allNews]);
+  }, [allArticles]);
   return (
     <div>
       <Route
-        exact
         path="/"
         component={() => (
           <LandingPage
@@ -36,7 +35,6 @@ function AppRoutes({ allNews, allCategories, filters, setfilters, allArticles })
   );
 }
 AppRoutes.PropsTypes = {
-  allNews: PropsTypes.array.isRequired,
   allCategories: PropsTypes.array.isRequired,
   filters: PropsTypes.object.isRequired,
   setfilters: PropsTypes.func.isRequired,

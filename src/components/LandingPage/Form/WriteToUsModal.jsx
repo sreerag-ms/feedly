@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/style-prop-object */
 import { Modal, Button, Input } from '@bigbinary/neetoui/v2';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import { Textarea, Input as FormikInput } from '@bigbinary/neetoui/v2/formik';
 
 import * as Yup from 'yup';

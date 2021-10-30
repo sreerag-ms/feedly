@@ -1,29 +1,13 @@
-/* eslint-disable react/style-prop-object */
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable no-unused-vars */
 import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Pane, Button, Checkbox, Typography } from '@bigbinary/neetoui/v2';
+import { Pane, Button } from '@bigbinary/neetoui/v2';
 import { Check } from '@bigbinary/neeto-icons';
 import { useHistory } from 'react-router';
-import commonFunctions from '../commonFunctions';
-import LoadingScreen from '../LoadingScreen';
-
+import LabelledCheckBox from './LabelledCheckBox';
 // eslint-disable-next-line react/prop-types
-function LabelledCheckBox({ checked = false, label, handleClick }) {
-  return (
-    <div className="text-gray-500 text-lg font-semibold flex flex-row px-3 my-5">
-      <Checkbox
-        checked={checked}
-        id={label}
-        label={commonFunctions.capitalize(label)}
-        onChange={(e) => handleClick(e)}
-      />
-    </div>
-  );
-}
 
-function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, allCategories }) {
+function SideBar({ showSideBar, setshowSideBar, filters, setfilters, allCategories }) {
   const history = useHistory();
 
   const [localCategoryFilter, setlocalCategoryFilter] = useState({});
@@ -107,6 +91,7 @@ function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, a
             <LabelledCheckBox checked={allFilter} label="all" handleClick={handleClick} />
             {Object.keys(localCategoryFilter).map((val) => (
               <LabelledCheckBox
+                key={val}
                 checked={localCategoryFilter[val]}
                 label={val}
                 handleClick={handleClick}
@@ -135,8 +120,6 @@ function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, a
   );
 }
 SideBar.propTypes = {
-  // eslint-disable-next-line react/require-default-props
-  children: PropTypes.node,
   showSideBar: PropTypes.bool.isRequired,
   setshowSideBar: PropTypes.func.isRequired,
   filters: PropTypes.object.isRequired,

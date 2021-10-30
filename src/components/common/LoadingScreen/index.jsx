@@ -6,7 +6,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NavBar from '../NavBar';
 
-function LoadingScreen({ showNav = false }) {
+const LoadingScreen = () => {
+  console.log('Loaadingg');
   return (
     <div>
       <div className="flex flex-col h-screen w-full items-center justify-center">
@@ -14,7 +15,6 @@ function LoadingScreen({ showNav = false }) {
       </div>
     </div>
   );
-}
-LoadingScreen.prototype = { showNav: PropTypes.bool };
+};
 
 export default LoadingScreen;

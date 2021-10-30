@@ -1,15 +1,15 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import SmallNewsTab from './SmallNewsTab';
-import commonFunctions from '../commonFunctions';
+import { subTitleGenerator } from '../../../common/stringHelperFunctions';
 
-function SmallNewsTabRow({ rowData = [] }) {
+const SmallNewsTabRow = ({ rowData = [] }) => {
   const [first, second] = rowData;
   return rowData.length === 1 ? (
     <div className="flex flex-row justify-self-start">
       <SmallNewsTab
         title={first.title}
-        subtitle={commonFunctions.subTitleGenerator(first)}
+        subtitle={subTitleGenerator(first)}
         imageUrl={first.imageUrl}
         id={first.id}
         category={first.category}
@@ -19,21 +19,21 @@ function SmallNewsTabRow({ rowData = [] }) {
     <div className="flex flex-row justify-between">
       <SmallNewsTab
         title={first.title}
-        subtitle={commonFunctions.subTitleGenerator(first)}
+        subtitle={subTitleGenerator(first)}
         imageUrl={first.imageUrl}
         id={first.id}
         category={first.category}
       />
       <SmallNewsTab
         title={second.title}
-        subtitle={commonFunctions.subTitleGenerator(second)}
+        subtitle={subTitleGenerator(second)}
         imageUrl={second.imageUrl}
         id={second.id}
         category={second.category}
       />
     </div>
   );
-}
+};
 SmallNewsTabRow.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   rowData: propTypes.array.isRequired,
