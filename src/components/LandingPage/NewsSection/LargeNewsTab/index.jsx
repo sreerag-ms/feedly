@@ -8,7 +8,7 @@ import { LoremIpsum } from 'react-lorem-ipsum';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 import { articleTrimmer } from 'commonFunctions/stringHelperFunctions';
-import RandomImage from 'commonComponents/RandomImage/index';
+import RandomImage from 'components/Common/RandomImage/index';
 
 const LargeNewsTab = ({ title, subtitle, content, id, imageUrl, category }) => {
   const history = useHistory();

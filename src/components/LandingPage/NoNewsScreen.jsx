@@ -3,7 +3,7 @@ import { Edit } from '@bigbinary/neeto-icons';
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
 import { allAsArray } from 'commonFunctions/stateHelperFunctions';
-import SmallNewsTabSection from 'commonComponents/SmallNewsTabSection';
+import SmallNewsTabSection from 'components/Common/SmallNewsTabSection';
 import NotFound from 'images/Vector.png';
 import WriteToUsModal from './Form/WriteToUsModal';
 
