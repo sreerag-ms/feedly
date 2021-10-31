@@ -85,8 +85,8 @@ const SideBar = ({ showSideBar, setShowSideBar, filters, setFilters, allCategori
         <div>loading</div>
       ) : (
         <Pane.Body>
-          <div className="flex flex-col  px-10 w-full">
-            <div className="text-gray-500 text-lg font-semibold mb-6">Category</div>
+          <div className="flex flex-col px-10 w-full">
+            <div className="text-gray-500 text-lg font-semibold mb-5">Category</div>
             <LabelledCheckBox checked={allFilter} label="all" handleClick={handleClick} />
             {Object.keys(localCategoryFilter).map((val) => (
               <LabelledCheckBox

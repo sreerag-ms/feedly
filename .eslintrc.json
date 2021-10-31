@@ -14,7 +14,7 @@
           ["commonComponents", "./src/components/Common"],
           ["commonFunctions", "./src/common"],
           ["images", "./src/assets/images"],
-          ["constatnts", "./src/constants"]
+          ["constants", "./src/constants"]
         ],
         "extensions": [".ts", ".js", ".jsx", ".json"]
       }

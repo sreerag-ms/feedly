@@ -33,22 +33,18 @@ const ArticlePage = ({ allArticles, stateLoading = true }) => {
     return () => {};
   }, [allArticles]);
   return (
-    <div>
-      <div className="flex flex-col flex-wrap mt-16">
-        {!isEmpty(selectedArticle) ? (
-          <DetailedNewsSection
-            title={selectedArticle.title}
-            content={selectedArticle.content}
-            imageUrl={selectedArticle.imageUrl}
-            author={selectedArticle.author}
-            time={selectedArticle.time}
-            date={selectedArticle.date}
-          />
-        ) : (
-          <></>
-        )}
-        <SmallNewsTabSection newsList={suggestedArticles} />
-      </div>
+    <div className="flex flex-col flex-wrap mt-2">
+      {!isEmpty(selectedArticle) ? (
+        <DetailedNewsSection
+          title={selectedArticle.title}
+          content={selectedArticle.content}
+          imageUrl={selectedArticle.imageUrl}
+          author={selectedArticle.author}
+          time={selectedArticle.time}
+          date={selectedArticle.date}
+        />
+      ) : null}
+      <SmallNewsTabSection newsList={suggestedArticles} />
     </div>
   );
 };

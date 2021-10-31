@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { useHistory } from 'react-router';
 import BodyWrapper from 'commonComponents/BodyWrapper';
 import SearchPortal from 'components/SearchPortal';
 import { addIdToArticles } from 'commonFunctions/stateHelperFunctions';
@@ -13,7 +12,6 @@ import Subscription from './components/Subscription';
 import loadedCategories from './constants/categories';
 
 const App = () => {
-  const history = useHistory();
   const allCategories = loadedCategories.all;
   const [allArticles, setAllArticles] = useState({});
   const [showSideBar, setShowSideBar] = useState(false);
@@ -33,9 +31,7 @@ const App = () => {
         allArt = { ...allArt, [val]: markedDataArray };
         setAllArticles(allArt);
       } catch (e) {
-        if (e.message === 'Network error') {
-          history.push('/noMatch');
-        }
+        console.log(e);
       }
     });
   };
@@ -52,11 +48,6 @@ const App = () => {
         showSearch={showSearch}
         setShowSearch={setShowSearch}
         setShowSideBar={setShowSideBar}
-        showSideBar={showSideBar}
-        allCategories={allCategories}
-        filters={filters}
-        setFilters={setFilters}
-        history={history}
         setShowSubscription={setShowSubscription}
       >
         <AppRoutes

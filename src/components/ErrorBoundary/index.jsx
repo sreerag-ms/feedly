@@ -7,7 +7,7 @@ import { Typography } from '@bigbinary/neetoui/v2';
 const ErrorBoundary = () => {
   const history = useHistory();
   return (
-    <div className=" flex  flex-col h-screen w-full justify-center py-16 items-center">
+    <div className=" flex absolute top-0 bottom-0 left-0 right-0 flex-col h-full w-full justify-center items-center">
       <div className="flex flex-col w-1/3 justify-center items-center">
         <div className="w-2/3 flex items-center justify-center">
           <img src={Error} alt="error.png" />

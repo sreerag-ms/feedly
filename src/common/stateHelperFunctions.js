@@ -8,16 +8,17 @@ export const addIdToArticles = ({ category, data: dataArray }) =>
     category,
   }));
 
-export const filterFive = (filters, n, allArticles = {}) => {
+export const filterAndTrim = (filters, n, allArticles = {}) => {
   const { archived, categories } = filters;
   let res = {};
   categories.forEach((val) => {
-    if (archived) res[val] = allArticles[val]?.slice(0, n) ?? [];
-    else
-      res[val] =
-        allArticles[val]
-          .filter((elem) => new Date(elem.date.split(',')[0]).getDate() === new Date().getDate())
-          .slice(0, n) ?? [];
+    if ((allArticles[val]?.length ?? 0) > 0)
+      if (archived) res[val] = allArticles[val]?.slice(0, n) ?? [];
+      else
+        res[val] =
+          allArticles[val]
+            .filter((elem) => new Date(elem.date.split(',')[0]).getDate() === new Date().getDate())
+            .slice(0, n) ?? [];
   });
   return res;
 };
@@ -26,4 +27,4 @@ export const allAsArray = (allArticles = {}) =>
   Object.values(allArticles).reduce((acc, val) => [...acc, ...val], []);
 
 export const filterAll = (allArticles = {}, filters) =>
-  allAsArray(filterFive(filters, 100, allArticles));
+  allAsArray(filterAndTrim(filters, 100, allArticles));

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { capitalize } from 'commonFunctions/stringHelperFunctions';
 
 const LabelledCheckBox = ({ checked = false, label, handleClick }) => (
-  <div className="text-gray-500 text-lg font-semibold flex flex-row px-3 my-5">
+  <div className="text-gray-500 text-lg font-semibold flex flex-row px-3 my-4">
     <Checkbox
       checked={checked}
       id={label}
