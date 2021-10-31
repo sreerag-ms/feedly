@@ -20,7 +20,7 @@ const NavBar = ({ setShowSideBar, setShowSearch, setShowSubscription }) => {
     setShowSideBar(true);
   };
   return (
-    <nav className="fixed w-full z-10 bg-white px-5 h-16 shadow-lg flex flex-wrap flex-col justify-center align-middle z-50 ">
+    <nav className="fixed w-full z-20 top-0 bg-white px-5 h-16 shadow-lg flex flex-wrap flex-col justify-center align-middle z-50 ">
       <div className="flex flex-wrap flex-row justify-between text-center ">
         <button
           type="button"
@@ -60,7 +60,7 @@ const NavBar = ({ setShowSideBar, setShowSearch, setShowSubscription }) => {
           <button
             onClick={() => handleFilterClick()}
             type="button"
-            className="h8 border-2 px-5 py-1.5  duration-500 bg-gray-200 rounded-md hover:bg-gray-300
+            className="h8 border-2 px-5 py-1.5  duration-500 bg-gray-200 rounded-sm hover:bg-gray-300
               focus:outline-none"
           >
             <div className="flex flex-row font-semibold">
