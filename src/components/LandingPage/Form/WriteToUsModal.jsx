@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Check } from '@bigbinary/neeto-icons';
-import dummyPost from '../../../apis/dummyPost';
+import dummyPost from 'apis/dummyPost';
 
 const WriteToUsModal = ({ showWriteToUs, setShowWriteToUs }) => {
   const responseSchema = Yup.object().shape({
@@ -19,9 +19,9 @@ const WriteToUsModal = ({ showWriteToUs, setShowWriteToUs }) => {
 
   const handleSubmit = async (values) => {
     try {
-      const resp = await dummyPost.send('https://jsonplaceholder.typicode.com/posts', values);
+      const resp = await dummyPost.send(values);
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
     setShowWriteToUs(false);
   };

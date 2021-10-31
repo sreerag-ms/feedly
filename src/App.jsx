@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from 'react-router';
-import BodyWrapper from 'components/Common/BodyWrapper';
+import BodyWrapper from 'commonComponents/BodyWrapper';
 import SearchPortal from 'components/SearchPortal';
 import { addIdToArticles } from 'commonFunctions/stateHelperFunctions';
 import inshortsApi from 'apis/inshortsApi';
@@ -19,7 +19,6 @@ const App = () => {
     archived: true,
     categories: ['business', 'sports', 'world', 'technology', 'national'],
   });
-
   const initState = async () => {
     let allArt = {};
     allCategories.forEach(async (val, index) => {
@@ -62,7 +61,12 @@ const App = () => {
           setFilters={setFilters}
         />
       </BodyWrapper>
-      <SearchPortal showSearch={showSearch} setShowSearch={setShowSearch} />
+      <SearchPortal
+        showSearch={showSearch}
+        setShowSearch={setShowSearch}
+        allArticles={allArticles}
+        filters={filters}
+      />
     </Router>
   );
 };

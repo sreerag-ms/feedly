@@ -2,8 +2,8 @@
 import { React, useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import PropsTypes from 'prop-types';
-import LandingPage from './components/LandingPage';
-import ArticlePage from './components/ArticlePage';
+import LandingPage from 'components/LandingPage';
+import ArticlePage from 'components/ArticlePage';
 
 const AppRoutes = ({ allCategories, filters, setFilters, allArticles }) => {
   const [stateLoading, setStateLoading] = useState(true);

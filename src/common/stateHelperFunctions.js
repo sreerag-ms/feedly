@@ -22,4 +22,8 @@ export const filterFive = (filters, n, allArticles = {}) => {
   return res;
 };
 
-// export default { addIdToArticles, filterFive };
+export const allAsArray = (allArticles = {}) =>
+  Object.values(allArticles).reduce((acc, val) => [...acc, ...val], []);
+
+export const filterAll = (allArticles = {}, filters) =>
+  allAsArray(filterFive(filters, 100, allArticles));
