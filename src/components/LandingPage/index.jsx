@@ -22,8 +22,7 @@ const LandingPage = ({ allArticles, filters, setFilters }) => {
       Object.keys(tempTrimmedNews).length === 0;
     setTrimmedAllArticles(tempTrimmedNews);
     if (!isEmpty) setIsLoading(false);
-    if (Object.keys(trimmedAllArticles).length >= filters.categories.length && isEmpty)
-      setIsLoading(false);
+    if (Object.keys(trimmedAllArticles).length >= filters.categories.length) setIsLoading(false);
     setIsNewsEmpty(isEmpty);
     return () => {};
   }, [filters, allArticles]);

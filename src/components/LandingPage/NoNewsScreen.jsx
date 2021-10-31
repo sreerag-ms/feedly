@@ -2,21 +2,22 @@
 import { Edit } from '@bigbinary/neeto-icons';
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
-
+import { allAsArray } from 'commonFunctions/stateHelperFunctions';
 import SmallNewsTabSection from 'commonComponents/SmallNewsTabSection';
 import NotFound from 'images/Vector.png';
 import WriteToUsModal from './Form/WriteToUsModal';
 
 const NoNews = ({ allArticles }) => {
   const [showWriteToUs, setShowWriteToUs] = useState(false);
+
   /// [count] of news, Preferably even.
   const randomNews = (count) => {
-    let mixedArticles = [];
-    Object.values(allArticles).forEach((element) => {
-      mixedArticles = [...mixedArticles, ...element];
-    });
+    const mixedArticles = allAsArray(allArticles)
+      .sort((a, b) => a.title.localeCompare(b.title))
+      .filter((v, i) => i % 3 === 0);
     return mixedArticles.slice(0, count);
   };
+
   return (
     <div className="w-full flex justify-center items-center flex-col">
       <div className="w-full flex justify-center flex-col items-center">
@@ -36,7 +37,9 @@ const NoNews = ({ allArticles }) => {
     </div>
   );
 };
+
 NoNews.propTypes = {
   allArticles: PropTypes.object.isRequired,
 };
+
 export default NoNews;

@@ -22,7 +22,7 @@ const RandomImage = ({ width = 100, height = 100, random = true, imageUrl = '' }
           />
         ) : (
           <img
-            className="relative z-10 object-cover object-center min-h-full"
+            className="object-cover object-center min-h-full"
             src={imageUrl}
             alt="Related pic"
             onLoad={() => {
