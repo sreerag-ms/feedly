@@ -4,8 +4,8 @@ import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { isEmpty } from 'ramda';
-import SmallNewsTabSection from 'components/Common/SmallNewsTabSection';
-import LoadingScreen from 'components/Common/LoadingScreen';
+import SmallNewsTabSection from 'commonComponents/SmallNewsTabSection';
+import LoadingScreen from 'commonComponents/LoadingScreen';
 import DetailedNewsSection from './DetailedNewsSection';
 
 const ArticlePage = ({ allArticles, stateLoading = true }) => {

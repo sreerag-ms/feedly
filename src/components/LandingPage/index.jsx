@@ -5,7 +5,7 @@
 import { React, useEffect, useState } from 'react';
 import PropTypes, { object } from 'prop-types';
 import { filterFive } from 'commonFunctions/stateHelperFunctions';
-import LoadingScreen from 'components/Common/LoadingScreen';
+import LoadingScreen from 'commonComponents/LoadingScreen';
 import NewsSection from './NewsSection';
 import FilterTabBar from './FilterTabView';
 import NoNews from './NoNewsScreen';

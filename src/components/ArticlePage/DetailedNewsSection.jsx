@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LoremIpsum from 'react-lorem-ipsum';
 import { Copy } from '@bigbinary/neeto-icons';
-import RandomImage from 'components/Common/RandomImage';
+import RandomImage from 'commonComponents/RandomImage';
 
 const DetailedNewsSection = ({ title, imageUrl, author, time, date, content }) => (
   <div className="flex flex-wrap flex-col my-8">
