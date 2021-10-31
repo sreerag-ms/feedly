@@ -8,6 +8,7 @@ import { addIdToArticles } from 'commonFunctions/stateHelperFunctions';
 import inshortsApi from 'apis/inshortsApi';
 import { initializeLogger } from 'commonFunctions/logger';
 import AppRoutes from './Router';
+import Subscription from './components/Subscription';
 
 const App = () => {
   const history = useHistory();
@@ -15,6 +16,7 @@ const App = () => {
   const [allArticles, setAllArticles] = useState({});
   const [showSideBar, setShowSideBar] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showSubscription, setShowSubscription] = useState(false);
   const [filters, setFilters] = useState({
     archived: true,
     categories: ['business', 'sports', 'world', 'technology', 'national'],
@@ -34,6 +36,9 @@ const App = () => {
       }
     });
   };
+  const addSubscription = (e) => {
+    console.log('subscribe', e);
+  };
 
   useEffect(() => {
     initializeLogger();
@@ -52,6 +57,7 @@ const App = () => {
         filters={filters}
         setFilters={setFilters}
         history={history}
+        setShowSubscription={setShowSubscription}
       >
         <AppRoutes
           allArticles={allArticles}
@@ -59,6 +65,11 @@ const App = () => {
           setShowSideBar={setShowSideBar}
           filters={filters}
           setFilters={setFilters}
+        />
+        <Subscription
+          showSubscription={showSubscription}
+          setShowSubscription={setShowSubscription}
+          handleSubmit={addSubscription}
         />
       </BodyWrapper>
       <SearchPortal

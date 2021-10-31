@@ -16,6 +16,7 @@ const BodyWrapper = ({
   history,
   setFilters,
   setShowSearch,
+  setShowSubscription,
 }) => (
   <div>
     <SideBar
@@ -26,10 +27,13 @@ const BodyWrapper = ({
       setFilters={setFilters}
     />
     {showNavBar ? (
-      <NavBar setShowSearch={setShowSearch} setShowSideBar={setShowSideBar} history={history} />
-    ) : (
-      <></>
-    )}
+      <NavBar
+        setShowSearch={setShowSearch}
+        setShowSideBar={setShowSideBar}
+        history={history}
+        setShowSubscription={setShowSubscription}
+      />
+    ) : null}
     <div className="max-w-full px-36 pt-16">{children}</div>
   </div>
 );
@@ -42,5 +46,6 @@ BodyWrapper.propTypes = {
   filters: PropsTypes.object.isRequired,
   setFilters: PropsTypes.func.isRequired,
   setShowSearch: PropsTypes.func.isRequired,
+  setShowSubscription: PropsTypes.func.isRequired,
 };
 export default BodyWrapper;

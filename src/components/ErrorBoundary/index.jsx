@@ -1,7 +1,5 @@
 import React from 'react';
 
-function ErrorBoundary() {
-  return <div>ErrorBoundary</div>;
-}
+const ErrorBoundary = () => <div>Error</div>;
 
 export default ErrorBoundary;
