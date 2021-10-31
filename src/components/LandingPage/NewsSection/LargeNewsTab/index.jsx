@@ -27,7 +27,7 @@ const LargeNewsTab = ({ title, subtitle, content, id, imageUrl, category }) => {
     <div className="flex flex-col flex-wrap  w-full">
       <div className="flex flex-row flex-wrap">
         <div>
-          <RandomImage height={263} width={526} random={false} imageUrl={imageUrl} />
+          <RandomImage height={263} width={526} random imageUrl={imageUrl} />
         </div>
         <div className="flex flex-col flex-wrap pl-5 py-2 w-1/2 justify-between">
           <div className="flex flex-col">
