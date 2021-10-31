@@ -1,15 +1,12 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-/* eslint-disable no-unused-vars */
 import { Search, Down, Right } from '@bigbinary/neeto-icons';
-import { Input } from '@bigbinary/neetoui/v2/';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const SearchBox = ({ searchItem, setSearchItem }) => (
-  <div className="w-full  flex flex-row px-1 py-1 bg-white ">
+  <div className="w-full  flex flex-row px-1 py-1 rounded-sm bg-white ">
     <div className="flex flex-row  justify-between items-center  px-2 w-full">
       <Search />
-
       <input
         type="text"
         value={searchItem}

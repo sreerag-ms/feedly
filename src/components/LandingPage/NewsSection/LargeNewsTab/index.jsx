@@ -1,10 +1,7 @@
 /* eslint-disable react/require-default-props */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/style-prop-object */
 import { React } from 'react';
 import { Button } from '@bigbinary/neetoui';
-import { LoremIpsum } from 'react-lorem-ipsum';
-// import fetchImage from '../../apis/randomImage';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 import { articleTrimmer } from 'commonFunctions/stringHelperFunctions';

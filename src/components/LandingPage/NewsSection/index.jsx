@@ -1,9 +1,9 @@
+/* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import React from 'react';
 import { capitalize, subTitleGenerator } from 'commonFunctions/stringHelperFunctions';
 import SmallNewsTabSection from 'commonComponents/SmallNewsTabSection';
 import LargeNewsTab from './LargeNewsTab';
-// import SmallNewsTab from '../SmallNewsTab';
 
 const NewsSection = ({ category, articles }) => {
   const [majorArticle, ...minorArticles] = articles;
@@ -30,7 +30,6 @@ const NewsSection = ({ category, articles }) => {
 };
 NewsSection.propTypes = {
   category: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
   articles: PropTypes.array.isRequired,
 };
 export default NewsSection;
