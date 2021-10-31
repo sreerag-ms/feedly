@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import ToolTip from 'commonComponents/Tooltip';
 
-const NavBar = ({ setShowSideBar, setShowSearch }) => {
+const NavBar = ({ setShowSideBar, setShowSearch, setShowSubscription }) => {
   const history = useHistory();
   const navigateHome = () => {
     history.push(`/`);
@@ -49,7 +49,7 @@ const NavBar = ({ setShowSideBar, setShowSearch }) => {
                 <button
                   type="button"
                   className="cursor-pointer  ease-in-out duration-300 hover:opacity-50 focus:outline-none"
-                  onClick={() => {}}
+                  onClick={() => setShowSubscription(true)}
                 >
                   <Notification title="tool" />
                 </button>
@@ -76,5 +76,6 @@ const NavBar = ({ setShowSideBar, setShowSearch }) => {
 NavBar.propTypes = {
   setShowSideBar: PropTypes.func.isRequired,
   setShowSearch: PropTypes.func.isRequired,
+  setShowSubscription: PropTypes.func.isRequired,
 };
 export default NavBar;

@@ -2,7 +2,7 @@
 
 export const debounce = (callBack, delay = 500) => {
   let timeout;
-  return function timerFunction(...args) {
+  return (...args) => {
     const later = () => {
       clearTimeout(timeout);
       callBack(...args);

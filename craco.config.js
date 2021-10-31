@@ -18,6 +18,7 @@ module.exports = {
       commonComponents: path.resolve(__dirname, "src/components/Common"),
       commonFunctions: path.resolve(__dirname, "src/common"),
       images: path.resolve(__dirname, "src/assets/images"),
+      constants: path.resolve(__dirname, "src/constants"),
     },
   },
 };

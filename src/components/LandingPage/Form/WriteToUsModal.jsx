@@ -9,14 +9,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Check } from '@bigbinary/neeto-icons';
 import dummyPost from 'apis/dummyPost';
+// eslint-disable-next-line import/no-unresolved
+import formValidationSchema from 'constants/formValidationSchema';
 
 const WriteToUsModal = ({ showWriteToUs, setShowWriteToUs }) => {
-  const responseSchema = Yup.object().shape({
-    name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
-    response: Yup.string().min(10, 'Too Short!').max(50, 'Too Long!'),
-    email: Yup.string().email('Invalid email').required('Required'),
-  });
-
   const handleSubmit = async (values) => {
     try {
       const resp = await dummyPost.send(values);
@@ -35,7 +31,7 @@ const WriteToUsModal = ({ showWriteToUs, setShowWriteToUs }) => {
           email: '',
         }}
         onSubmit={handleSubmit}
-        validationSchema={responseSchema}
+        validationSchema={formValidationSchema.writeToUs}
       >
         {({ isSubmitting }) => (
           <Form>
@@ -57,7 +53,7 @@ const WriteToUsModal = ({ showWriteToUs, setShowWriteToUs }) => {
                           name="email"
                           type="email"
                           label="Email"
-                          placeholder="Enter Name"
+                          placeholder="example@email.com"
                         />
                       </div>
                     </div>
