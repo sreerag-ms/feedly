@@ -7,20 +7,23 @@ import SearchPortal from 'components/SearchPortal';
 import { addIdToArticles } from 'commonFunctions/stateHelperFunctions';
 import inshortsApi from 'apis/inshortsApi';
 import { initializeLogger } from 'commonFunctions/logger';
+import SideBar from 'commonComponents/SideBar';
 import AppRoutes from './Router';
 import Subscription from './components/Subscription';
+import loadedCategories from './constants/categories';
 
 const App = () => {
   const history = useHistory();
-  const allCategories = ['business', 'sports', 'world', 'technology', 'national'];
+  const allCategories = loadedCategories.all;
   const [allArticles, setAllArticles] = useState({});
   const [showSideBar, setShowSideBar] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showSubscription, setShowSubscription] = useState(false);
   const [filters, setFilters] = useState({
     archived: true,
-    categories: ['business', 'sports', 'world', 'technology', 'national'],
+    categories: loadedCategories.default,
   });
+
   const initState = async () => {
     let allArt = {};
     allCategories.forEach(async (val, index) => {
@@ -31,13 +34,10 @@ const App = () => {
         setAllArticles(allArt);
       } catch (e) {
         if (e.message === 'Network error') {
-          history.push('');
+          history.push('/noMatch');
         }
       }
     });
-  };
-  const addSubscription = (e) => {
-    console.log('subscribe', e);
   };
 
   useEffect(() => {
@@ -69,7 +69,13 @@ const App = () => {
         <Subscription
           showSubscription={showSubscription}
           setShowSubscription={setShowSubscription}
-          handleSubmit={addSubscription}
+        />
+        <SideBar
+          showSideBar={showSideBar}
+          setShowSideBar={setShowSideBar}
+          allCategories={allCategories}
+          filters={filters}
+          setFilters={setFilters}
         />
       </BodyWrapper>
       <SearchPortal
