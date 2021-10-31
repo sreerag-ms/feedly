@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Result = ({ title, redirecrUrl, onClick }) => (
+const ResultItem = ({ title, redirecrUrl, onClick }) => (
   <div
     className="flex justify-start items-center w-full bg-white  cursor-pointer px-6 py-3 border-t-2 hover:bg-gray-50"
     onClick={() => onClick(redirecrUrl)}
@@ -13,9 +13,9 @@ const Result = ({ title, redirecrUrl, onClick }) => (
     <div className="text-left">{title}</div>
   </div>
 );
-Result.propTypes = {
+ResultItem.propTypes = {
   title: PropTypes.string.isRequired,
   redirecrUrl: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
-export default Result;
+export default ResultItem;

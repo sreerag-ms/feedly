@@ -1,4 +1,5 @@
 /* eslint-disable react/require-default-props */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/style-prop-object */
 import React from 'react';
 import { Button } from '@bigbinary/neetoui';
@@ -7,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { articleTrimmer } from 'commonFunctions/stringHelperFunctions';
 import RandomImage from 'commonComponents/RandomImage';
 
-const SmallNewsTab = ({ title, id = '#', subtitle, imageUrl, category }) => {
+const SmallNewsTab = ({ title, content = '', id = '#', subtitle, imageUrl, category }) => {
   const history = useHistory();
   const navigate = () => {
     history.push(`/${category}/${id}/readmore`);
@@ -22,7 +23,7 @@ const SmallNewsTab = ({ title, id = '#', subtitle, imageUrl, category }) => {
   };
 
   return (
-    <div className="flex flex-col flex-wrap w-5/12  max-h-24 items-center justify-center  px-0 py-2 my-3  ">
+    <div className="flex flex-col flex-wrap w-5/12  px-0 py-2 my-3  ">
       <div className="flex flex-row flex-wrap justify-between">
         <div>
           <RandomImage width={84} height={84} random={false} imageUrl={imageUrl} />
@@ -51,6 +52,7 @@ const SmallNewsTab = ({ title, id = '#', subtitle, imageUrl, category }) => {
 SmallNewsTab.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  content: PropTypes.string,
   id: PropTypes.string,
   imageUrl: PropTypes.string,
   category: PropTypes.string,

@@ -1,11 +1,14 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
 import { React, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import { filterFive } from 'commonFunctions/stateHelperFunctions';
 import LoadingScreen from 'commonComponents/LoadingScreen';
 import NewsSection from './NewsSection';
-import NoNews from './NoNewsScreen';
 import FilterTabBar from './FilterTabView';
+import NoNews from './NoNewsScreen';
 
 const LandingPage = ({ allArticles, filters, setFilters }) => {
   const [trimmedAllArticles, setTrimmedAllArticles] = useState({});
@@ -27,7 +30,7 @@ const LandingPage = ({ allArticles, filters, setFilters }) => {
   if (isLoading) return <LoadingScreen />;
 
   return (
-    <div className="flex flex-col flex-wrap mt-16">
+    <div className="flex  flex-col flex-wrap ">
       <FilterTabBar filters={filters} setFilters={setFilters} />
       {!isNewsEmpty ? (
         Object.keys(trimmedAllArticles).map((val) =>

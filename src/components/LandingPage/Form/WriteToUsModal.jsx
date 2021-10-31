@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/style-prop-object */
-import { Modal, Button } from '@bigbinary/neetoui/v2';
+import { Modal, Button, Input } from '@bigbinary/neetoui/v2';
 import { Formik, Form } from 'formik';
 import { Textarea, Input as FormikInput } from '@bigbinary/neetoui/v2/formik';
+
+import * as Yup from 'yup';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Check } from '@bigbinary/neeto-icons';
@@ -12,7 +15,7 @@ import formValidationSchema from 'constants/formValidationSchema';
 const WriteToUsModal = ({ showWriteToUs, setShowWriteToUs }) => {
   const handleSubmit = async (values) => {
     try {
-      await dummyPost.send(values);
+      const resp = await dummyPost.send(values);
     } catch (err) {
       console.log(err);
     }

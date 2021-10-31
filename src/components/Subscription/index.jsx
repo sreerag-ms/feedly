@@ -14,7 +14,7 @@ const Subscription = ({ showSubscription, setShowSubscription }) => {
     try {
       await dummyPost.send(values);
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
     }
     setShowSubscription(false);
   };

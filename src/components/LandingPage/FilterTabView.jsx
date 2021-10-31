@@ -1,12 +1,11 @@
-/* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable prefer-const */
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropsTypes from 'prop-types';
 import { Close } from '@bigbinary/neeto-icons';
 import { capitalize } from 'commonFunctions/stringHelperFunctions';
-
+// eslint-disable-next-line react/prop-types
 const FilterTab = ({ title, setFilters, filters }) => {
   const handleDelete = (item) => {
     if (item === 'archived') {
@@ -31,11 +30,22 @@ const FilterTab = ({ title, setFilters, filters }) => {
     </div>
   );
 };
-FilterTab.propTypes = {
-  title: PropTypes.string.isRequired,
-  filters: PropTypes.object.isRequired,
-  setFilters: PropTypes.func.isRequired,
-};
-export default FilterTab;
-
 // eslint-disable-next-line react/prop-types
+const FilterTabBar = ({ setFilters, filters }) => {
+  let archived;
+  let categories;
+  ({ archived, categories } = filters);
+  return (
+    <div className="mx-10  mt-10  w-max  flex flex-row justify-start items-center">
+      {categories.map((val) => (
+        <FilterTab title={val} setFilters={setFilters} filters={filters} />
+      ))}
+      {archived ? <FilterTab title="archived" setFilters={setFilters} filters={filters} /> : <></>}
+    </div>
+  );
+};
+FilterTabBar.prototypes = {
+  filters: PropsTypes.object.isRequired,
+  setFilters: PropsTypes.func.isRequired,
+};
+export default FilterTabBar;

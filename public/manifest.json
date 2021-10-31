@@ -1,6 +1,6 @@
 {
-  "short_name": "Feed.ly",
-  "name": "Feed.ly Short News",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",

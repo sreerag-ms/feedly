@@ -34,7 +34,7 @@ const ArticlePage = ({ allArticles, stateLoading = true }) => {
   }, [allArticles]);
   return (
     <div>
-      <div className="flex flex-col flex-wrap mt-16">
+      <div className="flex flex-col flex-wrap ">
         {!isEmpty(selectedArticle) ? (
           <DetailedNewsSection
             title={selectedArticle.title}

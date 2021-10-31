@@ -1,14 +1,16 @@
+/* eslint-disable prefer-const */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/style-prop-object */
+/* eslint-disable no-unused-vars */
 import { React, useEffect, useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { filterAll } from 'commonFunctions/stateHelperFunctions';
 import { useHistory } from 'react-router';
 import SearchBox from './SearchBox';
-import Result from './Result';
+import ResultItem from './ResultItem';
 import { debounce } from '../../common/debounce';
 
 const SearchPortal = ({ showSearch, setShowSearch, allArticles, filters }) => {
@@ -63,7 +65,7 @@ const SearchPortal = ({ showSearch, setShowSearch, allArticles, filters }) => {
   if (!showSearch) return null;
   return ReactDOM.createPortal(
     <div
-      className="fixed flex items-center justify-center z-50 inset-0 bg-gray-200 bg-opacity-80 overflow-y-auto h-full w-full "
+      className="fixed flex items-center justify-center z-50 inset-0 bg-gray-200 bg-opacity-70 overflow-y-auto h-full w-full "
       onClick={() => {
         setShowSearch(false);
       }}
@@ -74,14 +76,14 @@ const SearchPortal = ({ showSearch, setShowSearch, allArticles, filters }) => {
         <div className="flex flex-col max-h-80 overflow-scroll  rounded-b-sm w-full">
           {searchResults.length > 0 || searchItem.length === 0 ? (
             searchResults.map((val) => (
-              <Result
+              <ResultItem
                 title={val.title}
                 redirectPath={`/${val.title}/${val.category}`}
                 onClick={onResultClick}
               />
             ))
           ) : (
-            <Result
+            <ResultItem
               title={searching ? 'Searching...' : 'No results found'}
               redirectPath=""
               onClick={() => null}
