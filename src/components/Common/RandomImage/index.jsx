@@ -8,9 +8,13 @@ import { PageLoader } from '@bigbinary/neetoui';
 
 const RandomImage = ({ width = 100, height = 100, random = true, imageUrl = '' }) => {
   const [imageLoading, setImageLoading] = useState(true);
+
+  /// TODO: Bad inline css method of providing size. Need more elegant solution
+  const style = { height: `${height}px`, width: `${width}px` };
+
   return (
-    <div className={`bg-gray-100 w-${width} h-${height} overflow-hidden`}>
-      <div className={`relative items-center h-${height} z-1`}>
+    <div className="bg-gray-100 overflow-hidden" style={style}>
+      <div className="relative items-center h-full z-1">
         {random ? (
           <img
             className="relative z100"

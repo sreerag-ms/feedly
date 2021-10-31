@@ -27,7 +27,7 @@ const DetailedNewsSection = ({ title, imageUrl, author, time, date, content }) =
       </div>
     </div>
     <div className="flex flex-row justify-around my-6 ">
-      <RandomImage width={543} height={304} random imageUrl={imageUrl} />
+      <RandomImage width={543} height={304} random={false} imageUrl={imageUrl} />
     </div>
     <div className="text-sm text-section-title-gray text-justify">
       {content}

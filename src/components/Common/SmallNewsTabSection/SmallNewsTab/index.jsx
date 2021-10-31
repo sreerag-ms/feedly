@@ -26,7 +26,7 @@ const SmallNewsTab = ({ title, content = '', id = '#', subtitle, imageUrl, categ
     <div className="flex flex-col flex-wrap w-5/12  px-0 py-2 my-3  ">
       <div className="flex flex-row flex-wrap justify-between">
         <div>
-          <RandomImage width={84} height={84} random imageUrl={imageUrl} />
+          <RandomImage width={84} height={84} random={false} imageUrl={imageUrl} />
         </div>
         <div className="flex flex-col flex-wrap px-2 w-4/5 justify-between pb-1  ">
           <div className="text-xs font-semibold text-justify ">

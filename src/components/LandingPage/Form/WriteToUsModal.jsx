@@ -20,7 +20,6 @@ const WriteToUsModal = ({ showWriteToUs, setShowWriteToUs }) => {
   const handleSubmit = async (values) => {
     try {
       const resp = await dummyPost.send(values);
-      console.log('REs', resp);
     } catch (err) {
       console.log(err);
     }
