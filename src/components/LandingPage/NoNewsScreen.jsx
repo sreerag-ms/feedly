@@ -3,11 +3,11 @@ import { Edit } from '@bigbinary/neeto-icons';
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import NotFound from '../../assets/images/Vector.png';
-import SmallNewsTabSection from '../common/smallNewsTabSection';
+import SmallNewsTabSection from 'commonComponents/SmallNewsTabSection';
+import NotFound from 'images/Vector.png';
 import WriteToUsModal from './Form/WriteToUsModal';
 
-function NoNews({ allArticles }) {
+const NoNews = ({ allArticles }) => {
   const [showWriteToUs, setShowWriteToUs] = useState(false);
   /// [count] of news, Preferably even.
   const randomNews = (count) => {
@@ -35,7 +35,7 @@ function NoNews({ allArticles }) {
       <WriteToUsModal showWriteToUs={showWriteToUs} setShowWriteToUs={setShowWriteToUs} />
     </div>
   );
-}
+};
 NoNews.propTypes = {
   allArticles: PropTypes.object.isRequired,
 };

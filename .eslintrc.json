@@ -4,6 +4,22 @@
     "es2021": true
   },
 
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["apis", "./src/apis"],
+          ["assets", "./src/assets"],
+          ["components", "./src/components"],
+          ["commonComponents", "./src/components/Common"],
+          ["commonFunctions", "./src/common"],
+          ["images", "./src/assets/images"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
+    }
+  },
+
   "extends": ["plugin:react/recommended", "airbnb", "prettier"],
   "parserOptions": {
     "allowImportExportEverywhere": false,
@@ -19,5 +35,8 @@
   "plugins": ["react"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "globals": {
+    "logger": "readonly"
   }
 }

@@ -1,76 +1,70 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-unused-vars */
 import { React, useState, useEffect } from 'react';
 import './App.css';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { Pane } from '@bigbinary/neetoui/v2';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { useHistory } from 'react-router';
-import LandingPage from './components/LandingPage';
-import ArticlePage from './components/ArticlePage';
-import inshortsApi from './apis/inshortsApi';
-import helperFunctions from './components/common/helperFuncs';
-import LoadingScreen from './components/common/LoadingScreen';
+import BodyWrapper from 'components/Common/BodyWrapper';
+import SearchPortal from 'components/SearchPortal';
+import { addIdToArticles } from 'commonFunctions/stateHelperFunctions';
+import inshortsApi from 'apis/inshortsApi';
+import { initializeLogger } from 'commonFunctions/logger';
 import AppRoutes from './Router';
-import BodyWrapper from './components/common/Wrapper';
 
-function App() {
-  const history = useHistory;
-  const [allNews, setallNews] = useState([]);
-  const allCategories = ['business', 'sports', 'world', 'technology', 'science', 'national'];
-  const [allArticles, setallArticles] = useState({});
-  const [showSideBar, setshowSideBar] = useState(false);
-  const [stateLoading, setstateLoading] = useState(true);
-  const [filters, setfilters] = useState({
+const App = () => {
+  const history = useHistory();
+  const allCategories = ['business', 'sports', 'world', 'technology', 'national'];
+  const [allArticles, setAllArticles] = useState({});
+  const [showSideBar, setShowSideBar] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [filters, setFilters] = useState({
     archived: true,
-    categories: ['sports', 'world', 'technology', 'science'],
+    categories: ['business', 'sports', 'world', 'technology', 'national'],
   });
 
-  const fetchAllNews = async () => {
-    let all = [];
-    const allArt = {};
+  const initState = async () => {
+    let allArt = {};
     allCategories.forEach(async (val, index) => {
       try {
         const res = await inshortsApi.category(val);
-        const [markedDataObj, markedDataArray] = helperFunctions.addId(res.data, index);
-        all = [...all, markedDataObj];
-        allArt[val] = markedDataArray;
-        setallArticles(allArt);
-        setallNews(all);
-        if (all.length === allCategories.length) setstateLoading(false);
+        const markedDataArray = addIdToArticles(res.data, index);
+        allArt = { ...allArt, [val]: markedDataArray };
+        setAllArticles(allArt);
       } catch (e) {
-        console.log(e);
+        if (e.message === 'Network error') {
+          history.push('');
+        }
       }
     });
   };
 
   useEffect(() => {
-    fetchAllNews();
+    initializeLogger();
+    initState();
     return () => {};
   }, []);
 
   return (
     <Router>
       <BodyWrapper
-        setshowSideBar={setshowSideBar}
+        showSearch={showSearch}
+        setShowSearch={setShowSearch}
+        setShowSideBar={setShowSideBar}
         showSideBar={showSideBar}
         allCategories={allCategories}
         filters={filters}
-        setfilters={setfilters}
+        setFilters={setFilters}
         history={history}
       >
         <AppRoutes
           allArticles={allArticles}
-          allNews={allNews}
-          setallNews={setallNews}
           allCategories={allCategories}
-          showSideBar={showSideBar}
-          setshowSideBar={setshowSideBar}
+          setShowSideBar={setShowSideBar}
           filters={filters}
-          setfilters={setfilters}
+          setFilters={setFilters}
         />
       </BodyWrapper>
+      <SearchPortal showSearch={showSearch} setShowSearch={setShowSearch} />
     </Router>
   );
-}
+};
 
 export default App;

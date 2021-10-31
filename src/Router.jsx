@@ -5,24 +5,24 @@ import PropsTypes from 'prop-types';
 import LandingPage from './components/LandingPage';
 import ArticlePage from './components/ArticlePage';
 
-// import helperFunctions from './components/common/helperFuncs';
+const AppRoutes = ({ allCategories, filters, setFilters, allArticles }) => {
+  const [stateLoading, setStateLoading] = useState(true);
 
-function AppRoutes({ allNews, allCategories, filters, setfilters, allArticles }) {
-  const [stateLoading, setstateLoading] = useState(true);
   useEffect(() => {
-    setstateLoading(false);
+    if (Object.keys(allArticles).length === allCategories.length) setStateLoading(false);
     return () => {};
-  }, [allNews]);
+  }, [allArticles]);
+
   return (
     <div>
       <Route
-        exact
         path="/"
+        exact
         component={() => (
           <LandingPage
             allCategories={allCategories}
             filters={filters}
-            setfilters={setfilters}
+            setFilters={setFilters}
             allArticles={allArticles}
           />
         )}
@@ -34,12 +34,11 @@ function AppRoutes({ allNews, allCategories, filters, setfilters, allArticles })
       />
     </div>
   );
-}
+};
 AppRoutes.PropsTypes = {
-  allNews: PropsTypes.array.isRequired,
   allCategories: PropsTypes.array.isRequired,
   filters: PropsTypes.object.isRequired,
-  setfilters: PropsTypes.func.isRequired,
+  setFilters: PropsTypes.func.isRequired,
   allArticles: PropsTypes.object.isRequired,
 };
 

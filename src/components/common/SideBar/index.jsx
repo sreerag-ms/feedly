@@ -1,33 +1,16 @@
-/* eslint-disable react/style-prop-object */
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable no-unused-vars */
 import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Pane, Button, Checkbox, Typography } from '@bigbinary/neetoui/v2';
+import { Pane, Button } from '@bigbinary/neetoui/v2';
 import { Check } from '@bigbinary/neeto-icons';
 import { useHistory } from 'react-router';
-import commonFunctions from '../commonFunctions';
-import LoadingScreen from '../LoadingScreen';
+import LabelledCheckBox from './LabelledCheckBox';
 
-// eslint-disable-next-line react/prop-types
-function LabelledCheckBox({ checked = false, label, handleClick }) {
-  return (
-    <div className="text-gray-500 text-lg font-semibold flex flex-row px-3 my-5">
-      <Checkbox
-        checked={checked}
-        id={label}
-        label={commonFunctions.capitalize(label)}
-        onChange={(e) => handleClick(e)}
-      />
-    </div>
-  );
-}
-
-function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, allCategories }) {
+const SideBar = ({ showSideBar, setShowSideBar, filters, setFilters, allCategories }) => {
   const history = useHistory();
 
-  const [localCategoryFilter, setlocalCategoryFilter] = useState({});
-  const [localArchivedFilter, setlocalArchivedFilter] = useState(false);
+  const [localCategoryFilter, setLocalCategoryFilter] = useState({});
+  const [localArchivedFilter, setLocalArchivedFilter] = useState(false);
   const [allFilter, setAllFilter] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -35,7 +18,7 @@ function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, a
     setAllFilter(Object.values(localCategoryFilter).reduce((a, b) => b && a, true));
   };
   const checkAllFilters = () => {
-    setlocalCategoryFilter(allCategories.reduce((acc, val) => ({ ...acc, [val]: true }), {}));
+    setLocalCategoryFilter(allCategories.reduce((acc, val) => ({ ...acc, [val]: true }), {}));
   };
 
   const resetLocalStates = () => {
@@ -43,15 +26,15 @@ function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, a
     allCategories.forEach((val) => {
       localCategory[val] = filters.categories.includes(val);
     });
-    setlocalCategoryFilter(localCategory);
-    setlocalArchivedFilter(filters.archived);
+    setLocalCategoryFilter(localCategory);
+    setLocalArchivedFilter(filters.archived);
   };
 
   const handleClick = (event) => {
     const category = event.target.id;
     const status = event.target.checked;
     if (category === 'archived') {
-      setlocalArchivedFilter(status);
+      setLocalArchivedFilter(status);
     } else if (category === 'all') {
       if (status) {
         checkAllFilters();
@@ -62,22 +45,22 @@ function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, a
     } else {
       const cat = { ...localCategoryFilter };
       cat[category] = status;
-      setlocalCategoryFilter({ ...cat });
+      setLocalCategoryFilter({ ...cat });
     }
   };
 
   const saveFilter = () => {
-    setfilters({
+    setFilters({
       archived: localArchivedFilter,
       categories: Object.keys(localCategoryFilter).filter((val) => localCategoryFilter[val]),
     });
-    setshowSideBar(false);
+    setShowSideBar(false);
     history.push('/');
   };
 
   const cancelFilter = () => {
     resetLocalStates();
-    setshowSideBar(false);
+    setShowSideBar(false);
   };
 
   useEffect(() => {
@@ -107,6 +90,7 @@ function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, a
             <LabelledCheckBox checked={allFilter} label="all" handleClick={handleClick} />
             {Object.keys(localCategoryFilter).map((val) => (
               <LabelledCheckBox
+                key={val}
                 checked={localCategoryFilter[val]}
                 label={val}
                 handleClick={handleClick}
@@ -133,14 +117,12 @@ function SideBar({ children, showSideBar, setshowSideBar, filters, setfilters, a
       </Pane.Footer>
     </Pane>
   );
-}
+};
 SideBar.propTypes = {
-  // eslint-disable-next-line react/require-default-props
-  children: PropTypes.node,
   showSideBar: PropTypes.bool.isRequired,
-  setshowSideBar: PropTypes.func.isRequired,
+  setShowSideBar: PropTypes.func.isRequired,
   filters: PropTypes.object.isRequired,
-  setfilters: PropTypes.func.isRequired,
+  setFilters: PropTypes.func.isRequired,
   allCategories: PropTypes.array.isRequired,
 };
 export default SideBar;

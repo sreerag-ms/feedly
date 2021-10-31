@@ -7,9 +7,10 @@ import { LoremIpsum } from 'react-lorem-ipsum';
 // import fetchImage from '../../apis/randomImage';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
-import RandomImage from '../../../common/RandomImage';
+import { articleTrimmer } from 'commonFunctions/stringHelperFunctions';
+import RandomImage from 'commonComponents/RandomImage/index';
 
-function LargeNewsTab({ title, subtitle, content, id, imageUrl, category }) {
+const LargeNewsTab = ({ title, subtitle, content, id, imageUrl, category }) => {
   const history = useHistory();
   const navigate = () => {
     history.push(`/${category}/${id}/readmore`);
@@ -32,7 +33,7 @@ function LargeNewsTab({ title, subtitle, content, id, imageUrl, category }) {
           <div className="flex flex-col">
             <div className="text-xl font-medium text-newstab-title-gray text-left">{title}</div>
             <div className="text-right text-xs text-subtitle-gray mb-4 ">{`${subtitle} `}</div>
-            <div className="text-justify">{content}</div>
+            <div className="text-justify">{articleTrimmer(content, 50)}</div>
           </div>
           <div className="text-xs">
             <Button
@@ -47,7 +48,7 @@ function LargeNewsTab({ title, subtitle, content, id, imageUrl, category }) {
       </div>
     </div>
   );
-}
+};
 LargeNewsTab.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,

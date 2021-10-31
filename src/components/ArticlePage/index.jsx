@@ -3,14 +3,12 @@
 import { React, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-// import BodyWrapper from '../common/Wrapper';
 import { isEmpty } from 'ramda';
+import SmallNewsTabSection from 'commonComponents/SmallNewsTabSection';
+import LoadingScreen from 'commonComponents/LoadingScreen';
 import DetailedNewsSection from './DetailedNewsSection';
-import SmallNewsTabSection from '../common/smallNewsTabSection';
-import LoadingScreen from '../common/LoadingScreen/index';
-// import SideBar from '../common/SideBar';
-// import inshortsApi from '../../apis/inshortsApi';
-function ArticlePage({ allArticles, stateLoading = true }) {
+
+const ArticlePage = ({ allArticles, stateLoading = true }) => {
   if (stateLoading) {
     return <LoadingScreen showNav />;
   }
@@ -51,10 +49,9 @@ function ArticlePage({ allArticles, stateLoading = true }) {
         )}
         <SmallNewsTabSection newsList={suggestedArticles} />
       </div>
-      {/* </BodyWrapper> */}
     </div>
   );
-}
+};
 ArticlePage.propTypes = {
   stateLoading: PropTypes.bool,
   allArticles: PropTypes.object.isRequired,
