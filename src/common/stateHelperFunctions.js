@@ -4,7 +4,7 @@ import slugify from 'slugify';
 export const addIdToArticles = ({ category, data: dataArray }) =>
   dataArray.map((element) => ({
     ...element,
-    id: slugify(element.date + element.time + element.title),
+    id: slugify(element.date + element.time + category + element.url),
     category,
   }));
 

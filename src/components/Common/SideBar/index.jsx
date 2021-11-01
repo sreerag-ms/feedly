@@ -43,8 +43,6 @@ const SideBar = ({ showSideBar, setShowSideBar, filters, setFilters, allCategori
       }
       setAllFilter(status);
     } else {
-      // const cat = { ...localCategoryFilter };
-      // cat[category] = status;
       setLocalCategoryFilter({ ...localCategoryFilter, [category]: status });
     }
   };

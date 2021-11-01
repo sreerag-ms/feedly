@@ -68,13 +68,13 @@ const App = () => {
           filters={filters}
           setFilters={setFilters}
         />
+        <SearchPortal
+          showSearch={showSearch}
+          setShowSearch={setShowSearch}
+          allArticles={allArticles}
+          filters={filters}
+        />
       </BodyWrapper>
-      <SearchPortal
-        showSearch={showSearch}
-        setShowSearch={setShowSearch}
-        allArticles={allArticles}
-        filters={filters}
-      />
     </Router>
   );
 };

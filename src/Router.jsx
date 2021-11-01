@@ -8,6 +8,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 
 const AppRoutes = ({ allCategories, filters, setFilters, allArticles }) => {
   const [stateLoading, setStateLoading] = useState(true);
+  const [hotReload, setHotReload] = useState('');
 
   useEffect(() => {
     if (Object.keys(allArticles).length === allCategories.length) setStateLoading(false);
@@ -32,7 +33,14 @@ const AppRoutes = ({ allCategories, filters, setFilters, allArticles }) => {
         <Route
           exact
           path="/:category/:id/readmore"
-          component={() => <ArticlePage allArticles={allArticles} stateLoading={stateLoading} />}
+          component={() => (
+            <ArticlePage
+              allArticles={allArticles}
+              stateLoading={stateLoading}
+              hotReload={hotReload}
+              setHotReload={setHotReload}
+            />
+          )}
         />
         <Route
           exact

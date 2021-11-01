@@ -1,20 +1,15 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/style-prop-object */
 import { React, useEffect, useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { filterAll } from 'commonFunctions/stateHelperFunctions';
-import { useHistory } from 'react-router';
 import SearchBox from './SearchBox';
 import Result from './Result';
 import { debounce } from '../../common/debounce';
 
 const SearchPortal = ({ showSearch, setShowSearch, allArticles, filters }) => {
-  const history = useHistory();
-
-  // eslint-disable-next-line no-shadow
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [searchItem, setSearchItem] = useState('');
@@ -30,8 +25,7 @@ const SearchPortal = ({ showSearch, setShowSearch, allArticles, filters }) => {
   };
   const debouncedChangeHandler = useCallback(debounce(searchArticles, 500), []);
 
-  const onResultClick = (category, id) => {
-    history.push(`/${category}/${id}`);
+  const onResultClick = () => {
     setShowSearch(false);
   };
 
@@ -76,7 +70,7 @@ const SearchPortal = ({ showSearch, setShowSearch, allArticles, filters }) => {
             searchResults.map((val) => (
               <Result
                 title={val.title}
-                redirectPath={`/${val.title}/${val.category}`}
+                redirectPath={`/${val.category}/${val.id}/readmore`}
                 onClick={onResultClick}
               />
             ))
