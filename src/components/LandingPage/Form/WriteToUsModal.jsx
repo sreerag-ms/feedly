@@ -6,7 +6,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Check } from '@bigbinary/neeto-icons';
 import dummyPost from 'apis/dummyPost';
-// eslint-disable-next-line import/no-unresolved
 import formValidationSchema from 'constants/formValidationSchema';
 
 const WriteToUsModal = ({ showWriteToUs, setShowWriteToUs }) => {

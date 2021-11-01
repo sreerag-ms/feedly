@@ -1,13 +1,4 @@
 export default {
-  all: [
-    'business',
-    'sports',
-    'world',
-    'technology',
-    'national',
-    'startup',
-    'miscellaneous',
-    'automobile',
-  ],
+  all: ['business', 'sports', 'world', 'technology', 'national', 'startup'],
   default: ['national', 'business', 'sports', 'world'],
 };

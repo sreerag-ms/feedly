@@ -8,10 +8,11 @@ import SmallNewsTabSection from 'commonComponents/SmallNewsTabSection';
 import LoadingScreen from 'commonComponents/LoadingScreen';
 import DetailedNewsSection from './DetailedNewsSection';
 
-const ArticlePage = ({ allArticles, stateLoading = true }) => {
+const ArticlePage = ({ allArticles, stateLoading = true, hotReload, setHotReload }) => {
   if (stateLoading) {
     return <LoadingScreen showNav />;
   }
+
   const { category, id } = useParams();
   const [suggestedArticles, setSuggestedArticles] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState({});
@@ -31,30 +32,28 @@ const ArticlePage = ({ allArticles, stateLoading = true }) => {
       initState();
     }
     return () => {};
-  }, [allArticles]);
+  }, [allArticles, hotReload]);
   return (
-    <div>
-      <div className="flex flex-col flex-wrap mt-16">
-        {!isEmpty(selectedArticle) ? (
-          <DetailedNewsSection
-            title={selectedArticle.title}
-            content={selectedArticle.content}
-            imageUrl={selectedArticle.imageUrl}
-            author={selectedArticle.author}
-            time={selectedArticle.time}
-            date={selectedArticle.date}
-          />
-        ) : (
-          <></>
-        )}
-        <SmallNewsTabSection newsList={suggestedArticles} />
-      </div>
+    <div className="flex flex-col flex-wrap mt-2">
+      {!isEmpty(selectedArticle) ? (
+        <DetailedNewsSection
+          title={selectedArticle.title}
+          content={selectedArticle.content}
+          imageUrl={selectedArticle.imageUrl}
+          author={selectedArticle.author}
+          time={selectedArticle.time}
+          date={selectedArticle.date}
+        />
+      ) : null}
+      <SmallNewsTabSection newsList={suggestedArticles} setHotReload={setHotReload} />
     </div>
   );
 };
 ArticlePage.propTypes = {
   stateLoading: PropTypes.bool,
   allArticles: PropTypes.object.isRequired,
+  hotReload: PropTypes.string,
+  setHotReload: PropTypes.func,
 };
 
 export default ArticlePage;

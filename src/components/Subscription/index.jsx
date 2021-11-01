@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import dummyPost from 'apis/dummyPost';
 import { Input as FormikInput } from '@bigbinary/neetoui/v2/formik';
 import Wallpaper from 'images/orange.png';
-// eslint-disable-next-line import/no-unresolved
 import formValidationSchema from 'constants/formValidationSchema';
 
 const Subscription = ({ showSubscription, setShowSubscription }) => {

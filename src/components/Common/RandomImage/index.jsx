@@ -13,7 +13,7 @@ const RandomImage = ({ width = 100, height = 100, random = true, imageUrl = '' }
   const style = { height: `${height}px`, width: `${width}px` };
 
   return (
-    <div className="bg-gray-100 overflow-hidden" style={style}>
+    <div className={`bg-gray-100 overflow-hidden `} style={style}>
       <div className="relative items-center h-full z-1">
         {random ? (
           <img

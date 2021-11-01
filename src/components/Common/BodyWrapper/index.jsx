@@ -4,22 +4,18 @@ import PropsTypes from 'prop-types';
 import NavBar from 'commonComponents/NavBar';
 
 const BodyWrapper = ({ children, setShowSideBar, setShowSearch, setShowSubscription }) => (
-  <div className="h-screen">
+  <div>
     <NavBar
       setShowSearch={setShowSearch}
       setShowSideBar={setShowSideBar}
       setShowSubscription={setShowSubscription}
     />
-    <div className="max-w-full px-36">{children}</div>
+    <div className="max-w-full h-full px-36">{children}</div>
   </div>
 );
 BodyWrapper.propTypes = {
   children: PropsTypes.node.isRequired,
   setShowSideBar: PropsTypes.func.isRequired,
-  // showSideBar: PropsTypes.bool.isRequired,
-  // allCategories: PropsTypes.array.isRequired,
-  // filters: PropsTypes.object.isRequired,
-  // setFilters: PropsTypes.func.isRequired,
   setShowSearch: PropsTypes.func.isRequired,
   setShowSubscription: PropsTypes.func.isRequired,
 };

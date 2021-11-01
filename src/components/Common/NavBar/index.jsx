@@ -20,7 +20,7 @@ const NavBar = ({ setShowSideBar, setShowSearch, setShowSubscription }) => {
     setShowSideBar(true);
   };
   return (
-    <nav className="fixed w-full z-20 top-0 bg-white px-5 h-16 shadow-lg flex flex-wrap flex-col justify-center align-middle z-50 ">
+    <nav className="sticky w-full z-20 top-0 bg-white px-5 h-16 shadow-lg flex flex-wrap flex-col justify-center align-middle z-50 ">
       <div className="flex flex-wrap flex-row justify-between text-center ">
         <button
           type="button"

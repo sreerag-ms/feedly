@@ -8,7 +8,7 @@ const DetailedNewsSection = ({ title, imageUrl, author, time, date, content }) =
   <div className="flex flex-wrap flex-col my-8">
     <div className="flex flex-wrap flex-col my-4">
       <div className="text-3xl font-semibold">
-        {title}{' '}
+        {title}
         <button
           className="w-2 text-gray-100 hover:text-subtitle-gray outline-none focus:outline-none"
           type="button"
