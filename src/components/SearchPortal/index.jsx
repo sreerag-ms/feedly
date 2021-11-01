@@ -69,6 +69,7 @@ const SearchPortal = ({ showSearch, setShowSearch, allArticles, filters }) => {
           {searchResults.length > 0 || searchItem.length === 0 ? (
             searchResults.map((val) => (
               <Result
+                key={val.id}
                 title={val.title}
                 redirectPath={`/${val.category}/${val.id}/readmore`}
                 onClick={onResultClick}

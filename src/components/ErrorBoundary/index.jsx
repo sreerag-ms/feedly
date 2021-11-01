@@ -12,7 +12,7 @@ const ErrorBoundary = () => {
         <div className="w-2/3 flex items-center justify-center">
           <img src={Error} alt="error.png" />
         </div>
-        <div className="my-6 text-center text-xl font-semibold">
+        <div className="my-6 mb-10 text-center text-xl font-semibold">
           <div className="">
             <Typography style="h2">You have landed somewhere unknown!</Typography>
           </div>
@@ -22,7 +22,7 @@ const ErrorBoundary = () => {
           onClick={() => {
             history.push('/');
           }}
-          className="outline:none px-3 py-2 bg-gray-200 hover:bg-gray-300 focus:outline-none rounded-sm"
+          className="outline:none px-3 py-2 bg-gray-200 hover:bg-gray-300 duration-200 focus:outline-none rounded-sm"
         >
           Take me home
         </button>

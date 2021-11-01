@@ -16,9 +16,10 @@ const LandingPage = ({ allArticles, filters, setFilters }) => {
 
   useEffect(() => {
     const tempTrimmedNews = filterAndTrim(filters, 5, allArticles);
-    const isExists =
+    let isExists = false;
+    isExists =
       filters.categories.reduce((a, b) => (tempTrimmedNews[b]?.length ?? 0) > 0 || a, false) ||
-      Object.keys(tempTrimmedNews).length === 0;
+      Object.keys(tempTrimmedNews).length !== 0;
 
     setTrimmedAllArticles(tempTrimmedNews);
     setFilteredNewsExists(isExists);
